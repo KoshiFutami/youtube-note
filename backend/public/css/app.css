@@ -11286,3 +11286,37 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/*---------------------------------
+共通部分
+---------------------------------*/
+/*  
+app-wrapper
+---------------------------------*/
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*  
+ヘッダー
+---------------------------------*/
+/*  
+フッター
+---------------------------------*/
+/*---------------------------------
+コンテンツ部分
+---------------------------------*/
+/*  
+main
+---------------------------------*/
+.main {
+  flex: 1;
+  overflow-x: hidden;
+}
+
+.section .section__inner {
+  margin: auto;
+  max-width: 880px;
+  padding: 80px 40px;
+}

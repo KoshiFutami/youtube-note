@@ -1,7 +1,4 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +10,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NoteController;
+
+Route::get('/', [HomeController::class, 'home'])->name('home');
+
+Route::prefix('notes')->name('notes.')->group(function() {
+    Route::middleware('auth')->group(function () {
+        Route::get('/create', [NoteController::class, 'create'])->name('create');
+        Route::post('/store', [NoteController::class, 'store'])->name('store');
+        Route::delete('/{id}/destroy', [NoteController::class, 'destroy'])->name('destroy');
+        Route::get('/{id}/edit', [NoteController::class, 'edit'])->name('edit');
+        Route::post('/{id}/update', [NoteController::class, 'update'])->name('update');
+    });
+    Route::get('/{id}', [NoteController::class, 'show'])->name('show');
+
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

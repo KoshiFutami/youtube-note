@@ -3,26 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Note;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * ホーム画面を表示（アプリの使い方や最近の投稿一覧など）
      *
-     * @return void
+     * @return view
      */
-    public function __construct()
+    public function home()
     {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
+        // 最新の投稿
+        $notes = Note::orderBy('created_at', 'DESC')->take(6)->get();
+        return view('home', [
+            'notes' => $notes,
+        ]);
     }
 }
