@@ -20,7 +20,7 @@ Route::prefix('notes')->name('notes.')->group(function() {
     Route::middleware('auth')->group(function () {
         Route::get('/create', [NoteController::class, 'create'])->name('create');
         Route::post('/store', [NoteController::class, 'store'])->name('store');
-        Route::delete('/destroy', [NoteController::class, 'destroy'])->name('destroy');
+        Route::delete('/{id}/destroy', [NoteController::class, 'destroy'])->name('destroy');
         Route::get('/{id}/edit', [NoteController::class, 'edit'])->name('edit');
         Route::post('/{id}/update', [NoteController::class, 'update'])->name('update');
     });
