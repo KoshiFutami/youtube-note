@@ -27,15 +27,13 @@
                     <div class="text-danger">{{ $errors->first('start_seconds') }}</div>
                 @endif
             </div>
-            <?php /*
-                        <div class="form-group">
+            <div class="form-group">
                 <label for="tags" class="form-label">タグ（複数のタグを追加する場合にはスペースで区切ってください）</label>
                 <input type="text" name="tags" id="tags" class="form-control {{ $errors->has('tags') ? 'is-invalid' : '' }}"　value="{{ old('tags') }}">
             @if ($errors->has('tags'))
                 <div class="text-danger">{{ $errors->first('tags') }}</div>
             @endif
             </div>
-            */  ?>
 
             <div class="form-group">
                 <label class="form-label" for="content">補足内容</label>

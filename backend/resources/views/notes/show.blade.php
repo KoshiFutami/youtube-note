@@ -4,6 +4,11 @@
 <div class="section NoteDetail">
     <div class="section__inner">
         <div class="note-detail">
+            <div class="note-detail__tags">
+            @foreach ($note->tags as $tag)
+                <span class="note_detail__tag">{{ $tag->name }}</span>
+            @endforeach
+            </div>
             <h2 class="note-detail__title">{{ $note->title }}</h2>
             <div class="note-detail__figure">
                 <iframe style="width:100%;aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/{{ $note->video->yt_video_id }}?start={{ $note->video->start_seconds }}" frameborder="0" allowfullscreen></iframe>
@@ -57,7 +62,6 @@
                             <div class="form__error-msg">{{ $errors->first('start_seconds') }}</div>
                             @endif
                         </div>
-                        <?php /*
                         <div class="form__item">
                             <label for="tags">タグ（複数のタグを追加する場合にはスペースで区切ってください）</label>
                             <input type="text" name="tags" id="tags" class="{{ $errors->has('tags') ? 'is-invalid' : '' }}"　value="" placeholder="新規タグ">
@@ -71,7 +75,6 @@
                             <div class="form__error-msg">{{ $errors->first('tags') }}</div>
                         @endif
                         </div>
-                        */ ?>
                         <div class="form__item">
                             <label for="content">補足内容</label>
                             <textarea type="text" name="content" id="content" class="{{ $errors->has('content') ? 'is-invalid' : '' }}">{{ $note->content }}</textarea>

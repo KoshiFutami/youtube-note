@@ -43,9 +43,12 @@ class NoteController extends Controller
         }
         $video->save(); 
 
+        $tags_id = Note::saveTagsAndGetIds($request->tags);
+
         $note->video_id = $video->id;
         $note->user_id = auth()->id();
         $note->save(); 
+        $note->tags()->sync($tags_id);
 
         $video->note_id = $note->id;
         $video->save();
@@ -75,9 +78,20 @@ class NoteController extends Controller
         }
         $video->save(); 
 
+        $tags_id = Note::saveTagsAndGetIds($request->tags);
+
+        // このメモにもともと紐付いていたタグの処理
+        if ($request->current_tags) {
+            $current_tags = $request->current_tags;
+            foreach($current_tags as $tag) {
+                array_push($tags_id, $tag);
+            }
+        }
+
         $note->title = $request->title;
         $note->content = $request->content;
         $note->save(); 
+        $note->tags()->sync($tags_id);
 
         return redirect()->route('notes.show', ['id' => $note->id]);
     }
