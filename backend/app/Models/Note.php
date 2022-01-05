@@ -33,6 +33,14 @@ class Note extends Model
     }
 
     /**
+     * このメモに紐づくタグを取得
+     */
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
+
+    /**
      * YouTube動画のURLから動画IDを取得
      */
     public static function getYtVideoId($video_url)
