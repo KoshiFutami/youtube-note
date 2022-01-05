@@ -37,7 +37,7 @@ class Note extends Model
      */
     public function tags()
     {
-        return $this->hasMany(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
 
     /**
@@ -49,5 +49,31 @@ class Note extends Model
         $yt_video_id = substr($video_url, $yt_video_id_pos + 2, 11);
 
         return $yt_video_id;
+    }
+
+    /**
+     * 入力されたタグを登録してidを配列にまとめる
+     */
+    public static function saveTagsAndGetIds($request_tags)
+    {
+        // 全角スペースを半角スペースに変換
+        $input_tags = mb_convert_kana($request_tags, 's', 'utf-8');
+        // 入力値を半角スペースで区切って配列に追加
+        $input_tags = preg_split('/ ++/', $input_tags, -1, PREG_SPLIT_NO_EMPTY);
+
+        // 配列の単語を1つずつタグとして登録（すでにあれば登録はしない）し、登録したデータを新しい配列に追加
+        $tags = [];
+        foreach ($input_tags as $tag_name) {
+            $record = Tag::firstOrCreate(['name' => $tag_name]);
+            array_push($tags, $record);
+        }
+        
+        // それぞれのタグのidを配列に保存
+        $tags_id = [];
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag->id);
+        }
+
+        return $tags_id;
     }
 }
