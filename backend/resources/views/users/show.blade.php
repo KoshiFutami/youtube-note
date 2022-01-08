@@ -5,10 +5,10 @@
     <div class="section__inner">
         <div class="user-detail">
             <div class="thumbnail">
-            @if ($user->thumbnail === 'default.jpg')
-                <img src="/image/user_thumbnail/default.jpg" alt="{{ $user->name }}">
+            @if ($user->thumbnail)
+                <img src="{{ asset($user->thumbnail) }}">
             @else
-                <img src="/storage/image/user_thumbnail/{{ $user->thumbnail }}" alt="{{ $user->name }}">
+                <img src="{{ asset('image/user_thumbnail_default.jpg') }}">
             @endif
             </div>
             <h2 class="name">{{ $user->name }}  <span class="username">{{ "@" . $user->username }}</span></h2>
