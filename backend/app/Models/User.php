@@ -72,7 +72,7 @@ class User extends Authenticatable
 
             // ローカルに一時的に保存
             // $tmp_path = storage_path('app/tmp/') . $file_name;
-            $tmp_path = 'tmp/' . $file_name;
+            $tmp_path = 'app/tmp/' . $file_name;
             $img->save($tmp_path);
 
             // ローカルに一時的に保存した画像をS3にアップロード
