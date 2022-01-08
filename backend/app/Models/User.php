@@ -57,7 +57,7 @@ class User extends Authenticatable
 
         $img->fit(320, 320, function ($constraint) {
             $constraint->upsize();
-        })->orientate();
+        });
 
         if (app()->isLocal()) {
             $file_name = 'user_thumbnail_' . $user_id . '.jpg';
