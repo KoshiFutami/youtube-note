@@ -71,7 +71,7 @@ class User extends Authenticatable
             $file_name = 'user_thumbnail_' . $user_id . '.jpg';
 
             // ローカルに一時的に保存
-            $tmp_path = 'app/tmp/' . $file_name;
+            $tmp_path = 'tmp/' . $file_name;
             Storage::put($tmp_path, (string) $img->encode('jpg'));
 
             // ローカルに一時的に保存した画像をS3にアップロード
