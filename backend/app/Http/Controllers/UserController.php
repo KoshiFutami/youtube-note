@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function edit()
     {
-        $user = Auth::user();
+        $user = User::find(Auth::id());
    
         return view('users.edit',[
             'user' => $user,
@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $user = Auth::user();
+        $user = User::find(Auth::id());
 
         $user->name = $request->name;
         $user->username = $request->username;
@@ -51,6 +51,9 @@ class UserController extends Controller
             $user->email_verified_at = null;
             $user->email = $request->email;
         }
+
+        // ユーザー名を必須に、登録時に入力させる
+        // Todo：プロフィール写真変更（ファイル名をユーザー名に）
 
         $user->save();
 
