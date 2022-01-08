@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Image;
+use Storage;
 
 class User extends Authenticatable
 {
@@ -44,4 +46,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * プロフィール画像を保存
+     */
+    public static function storeProfileThumbnail($thumnail_file, $user_id)
+    {
+        $img = Image::make($thumnail_file);
+
+        $img->fit(320, 320, function ($constraint) {
+            $constraint->upsize();
+        });
+
+        $file_name = $user_id . '_' . $thumnail_file->getClientOriginalName();
+        $save_path = 'public/image/user_thumbnail/' . $file_name;
+        Storage::put($save_path, (string) $img->encode());
+
+        return $file_name;
+    }
 }
