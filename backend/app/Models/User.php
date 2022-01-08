@@ -70,7 +70,7 @@ class User extends Authenticatable
             $file_name = 'user_thumbnail_' . $user_id . '.jpg';
 
             // ローカルに一時的に保存
-            $tmp_path = storage_path('app/tmp/') . $file_name;
+            $tmp_path = storage_path('public/tmp/') . $file_name;
             // $img->save($tmp_path);
             Storage::put($tmp_path, (string) $img->encode('jpg'));
 
