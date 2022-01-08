@@ -5,7 +5,11 @@
     <div class="section__inner">
         <div class="user-detail">
             <div class="thumbnail">
-                <img src="/image/user_thumbnail/{{ $user->thumbnail }}" alt="{{ $user->name }}">
+            @if ($user->thumbnail === 'default.jpg')
+                <img src="/image/user_thumbnail/default.jpg" alt="{{ $user->name }}">
+            @else
+                <img src="/storage/image/user_thumbnail/{{ $user->thumbnail }}" alt="{{ $user->name }}">
+            @endif
             </div>
             <h2 class="name">{{ $user->name }}  <span class="username">{{ "@" . $user->username }}</span></h2>
             @if (Auth::check() && $user->id === Auth::id())

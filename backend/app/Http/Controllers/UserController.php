@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Image;
+use Storage;
 use Laravel\Ui\Presets\React;
 
 class UserController extends Controller
@@ -52,8 +54,22 @@ class UserController extends Controller
             $user->email = $request->email;
         }
 
-        // ユーザー名を必須に、登録時に入力させる
-        // Todo：プロフィール写真変更（ファイル名をユーザー名に）
+        $user_thumbnail = $request->file('thumbnail');
+
+        if ($user_thumbnail != null) {
+            $img = Image::make($user_thumbnail);
+
+            $img->fit(320, 320, function ($constraint) {
+                $constraint->upsize();
+            });
+
+            $file_name = $user->id . '_' . $user_thumbnail->getClientOriginalName();
+            $save_path = 'public/image/user_thumbnail/' . $file_name;
+            Storage::put($save_path, (string) $img->encode());
+
+            $user->thumbnail = $file_name;
+        } 
+        
 
         $user->save();
 

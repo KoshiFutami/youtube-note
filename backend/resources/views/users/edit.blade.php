@@ -26,7 +26,11 @@
                     <label for="thumbnail">プロフィール写真</label>
                     <input type="file" name="thumbnail" id="thumbnail">
                     <div class="thumnail-preview" id="thumbnailPreview">
-                        <img src="/image/user_thumbnail/{{ $user->thumbnail }}" alt="{{ $user->name }}">
+                    @if ($user->thumbnail === 'default.jpg')
+                        <img src="/image/user_thumbnail/{{ $user->thumbnail }}">
+                    @else
+                        <img src="/storage/image/user_thumbnail/{{ $user->thumbnail }}">
+                    @endif
                     </div>
                 </div>
                 <input type="submit" value="更新する">
