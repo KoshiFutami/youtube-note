@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Http\File;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,10 +59,29 @@ class User extends Authenticatable
             $constraint->upsize();
         });
 
-        $file_name = $user_id . '_' . $thumnail_file->getClientOriginalName();
-        $save_path = 'public/image/user_thumbnail/' . $file_name;
-        Storage::put($save_path, (string) $img->encode());
+        if (app()->isLocal()) {
 
-        return $file_name;
+            $file_name = 'user_thumbnail_' . $user_id . '.jpg';
+            $save_path = 'public/image/' . $file_name;
+            Storage::put($save_path, (string) $img->encode('jpg'));
+            $thumbnail_path = Storage::url($save_path);
+
+        } else {
+    
+            $file_name = 'user_thumbnail_' . $user_id . '.jpg';
+
+            // ローカルに一時的に保存
+            $tmp_path = storage_path('app/tmp/') . $file_name;
+            $img->save($tmp_path);
+
+            // ローカルに一時的に保存した画像をS3にアップロード
+            $s3_path = Storage::disk('s3')->putFileAs('/', new File($tmp_path), 'upload/' . $file_name, 'public');
+            $thumbnail_path = Storage::disk('s3')->url($s3_path);
+
+            // ローカルに一時的に保存した画像を削除
+            Storage::disk('local')->delete('tmp/' . $file_name);
+        }
+
+        return $thumbnail_path;
     }
 }

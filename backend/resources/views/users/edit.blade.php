@@ -26,10 +26,10 @@
                     <label for="thumbnail">プロフィール写真</label>
                     <input type="file" name="thumbnail" id="thumbnail">
                     <div class="thumnail-preview" id="thumbnailPreview">
-                    @if ($user->thumbnail === 'default.jpg')
-                        <img src="/image/user_thumbnail/{{ $user->thumbnail }}">
+                    @if ($user->thumbnail)
+                        <img src="{{ asset($user->thumbnail) }}">
                     @else
-                        <img src="/storage/image/user_thumbnail/{{ $user->thumbnail }}">
+                        <img src="{{ asset('image/user_thumbnail_default.jpg') }}">
                     @endif
                     </div>
                 </div>
