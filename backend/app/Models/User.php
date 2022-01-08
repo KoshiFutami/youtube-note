@@ -71,7 +71,7 @@ class User extends Authenticatable
             // S3にアップロード
             $s3_path = Storage::disk('s3')->put('/upload/' . $file_name, $img->encode(), 'public');
             $thumbnail_path = Storage::disk('s3')->url($s3_path);
-            dd($thumnail_path);
+            dd($thumbnail_path);
 
             // $file_name = 'user_thumbnail_' . $user_id . '.jpg';
 
