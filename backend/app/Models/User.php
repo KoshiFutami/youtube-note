@@ -58,10 +58,15 @@ class User extends Authenticatable
             $constraint->upsize();
         });
 
-        $file_name = $user_id . '_' . $thumnail_file->getClientOriginalName();
-        $save_path = 'public/image/user_thumbnail/' . $file_name;
-        Storage::put($save_path, (string) $img->encode());
+        if (app()->isLocal()) {
+            $file_name = 'user_thumbnail_' . $user_id . '.jpg';
+            $save_path = 'public/image/' . $file_name;
+            Storage::put($save_path, (string) $img->encode());
+            $thumbnail_path = Storage::url($save_path);
+        } else {
 
-        return $file_name;
+        }
+
+        return $thumbnail_path;
     }
 }
