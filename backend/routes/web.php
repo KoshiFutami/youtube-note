@@ -13,6 +13,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
@@ -25,7 +26,14 @@ Route::prefix('notes')->name('notes.')->group(function() {
         Route::post('/{id}/update', [NoteController::class, 'update'])->name('update');
     });
     Route::get('/{id}', [NoteController::class, 'show'])->name('show');
+});
 
+// Todo：認証済ユーザーが自分のページだけ編集などできるようにルーティングを設定
+Route::prefix('users')->name('users.')->group(function() {
+    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::post('/{id}/update', [UserController::class, 'update'])->name('update');
+
+    Route::get('/{id}', [UserController::class, 'show'])->name('show');
 });
 
 Auth::routes();

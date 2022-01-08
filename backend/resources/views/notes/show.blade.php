@@ -26,10 +26,9 @@
                 </div>
             @else
                 <a href="/users/{{ $note->user_id }}" class="post-detail__user">
-                    <?php /*
-                    <div class="thumb">
-                        <img src="/storage/image/{{  $note->user->profile_image }}" alt="{{ $note->user->name }}">
-                    </div> */ ?>
+                    <div class="thumbnail">
+                        <img src="/image/user_thumbnail/{{  $note->user->thumbnail }}" alt="{{ $note->user->name }}">
+                    </div>
                     <div class="username"><span>{{ $note->user->name }}</span>さん</div>
                 </a>
             @endif
