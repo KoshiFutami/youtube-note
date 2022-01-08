@@ -83,7 +83,7 @@ class User extends Authenticatable
             // $s3_path = Storage::disk('s3')->putFileAs('/', new File($tmp_path), 'upload/' . $file_name, 'public');
             // $thumbnail_path = Storage::disk('s3')->url($s3_path);
 
-            ローカルに一時的に保存した画像を削除
+            // ローカルに一時的に保存した画像を削除
             // Storage::disk('local')->delete('tmp/' . $file_name);
         }
 
