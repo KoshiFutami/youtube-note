@@ -56,10 +56,10 @@ class NoteController extends Controller
 
     /**
      * 作成済のメモを更新
-     * @param array $request
+     * @param array NoteRequest　$request
      * @param int $id
      */
-    public function update(Request $request, int $id)
+    public function update(NoteRequest $request, int $id)
     {
         $note = Note::find($id);
         $video = Video::find($note->video_id);

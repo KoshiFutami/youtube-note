@@ -75,7 +75,7 @@
                         @endif
                         </div>
                         <div class="form__item">
-                            <label for="content">補足内容</label>
+                            <label for="content">メモ内容</label>
                             <textarea type="text" name="content" id="content" class="{{ $errors->has('content') ? 'is-invalid' : '' }}">{{ $note->content }}</textarea>
                             @if ($errors->has('content'))
                             <div class="form__error-msg">{{ $errors->first('content') }}</div>

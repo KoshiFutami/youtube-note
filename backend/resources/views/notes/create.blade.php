@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="content">補足内容</label>
+                <label class="form-label" for="content">メモ内容</label>
                 <textarea type="text" name="content" id="content" class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}">{{ old('content') }}</textarea>
                 @if ($errors->has('content'))
                     <div class="text-danger">{{ $errors->first('content') }}</div>
