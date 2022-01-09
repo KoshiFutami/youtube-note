@@ -22,9 +22,9 @@ class NoteController extends Controller
 
     /**
      * 作成したメモを登録
-     * @param array $request
+     * @param array NoteRequest $request
      */
-    public function store(Request $request)
+    public function store(NoteRequest $request)
     {
         $note = new Note();
         $note->fill($request->all());
