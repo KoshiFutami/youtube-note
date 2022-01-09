@@ -1,4 +1,8 @@
 @extends('layouts.app')
+
+@section('title', '新規メモを作成｜YouTube Note')
+@section('description', 'こちらはYouTube Noteの新規メモ作成ページです。お気に入りのYouTube動画の好きな場面をアプリに残して、効率良く見直せるようにしましょう。')
+
 @section('content')
 
 <div class="section NotesList">

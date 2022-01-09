@@ -1,4 +1,8 @@
 @extends('layouts.app')
+
+@section('title', $user->name . '｜YouTube Note')
+@section('description', $user->introduction)
+
 @section('content')
 
 <div class="section UserDetail">
