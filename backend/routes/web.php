@@ -17,6 +17,8 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
+Auth::routes();
+
 Route::prefix('notes')->name('notes.')->group(function() {
     Route::middleware('auth')->group(function () {
         Route::get('/create', [NoteController::class, 'create'])->name('create');
@@ -35,5 +37,4 @@ Route::name('users.')->group(function() {
     Route::get('/{username}', [UserController::class, 'show'])->name('show');
 });
 
-Auth::routes();
 
