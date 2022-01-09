@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'ログイン｜YouTube Note')
+@section('description', 'こちらはYouTube Noteのユーザーログインページです。YouTube Noteは、YouTube動画の場面をちょっとしたメモと一緒にアプリに残すことができるアプリです。')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

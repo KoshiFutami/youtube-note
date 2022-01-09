@@ -1,4 +1,8 @@
 @extends('layouts.app')
+
+@section('title', 'プロフィール編集｜' . $user->name . '｜YouTube Note')
+@section('description', $user->name . 'さんのプロフィールを編集しています。')
+
 @section('content')
 
 <div class="section UserEdit">
