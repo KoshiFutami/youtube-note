@@ -12,16 +12,6 @@ class Video extends Model
     protected $fillable = [
         'yt_video_id',
         'start_seconds',
-        'note_id',
     ];
-
-
-    /**
-     * この動画に紐づくメモを取得
-     */
-    public function note()
-    {
-        return $this->belongsTo(Note::class);
-    }
 
 }
