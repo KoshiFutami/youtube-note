@@ -50,9 +50,6 @@ class NoteController extends Controller
         $note->save(); 
         $note->tags()->sync($tags_id);
 
-        $video->note_id = $note->id;
-        $video->save();
-
         return redirect()->route('notes.show', ['id' => $note->id]);
     }
 
@@ -65,8 +62,8 @@ class NoteController extends Controller
     public function update(Request $request, int $id)
     {
         $note = Note::find($id);
-        $video = Video::where('note_id', $id)->first();
-        
+        $video = Video::find($note->video_id);
+
         $video_url = $request->video_url;
         $yt_video_id = Note::getYtVideoId($video_url);
         $video->yt_video_id = $yt_video_id;
@@ -76,7 +73,8 @@ class NoteController extends Controller
         } else {
             $video->start_seconds = 0;
         }
-        $video->save(); 
+
+        $video->save();
 
         $tags_id = Note::saveTagsAndGetIds($request->tags);
 
@@ -104,10 +102,11 @@ class NoteController extends Controller
     public function destroy(int $id)
     {
         $note = Note::find($id);
-        $video = Video::where('note_id', $id)->first();
+        $video = Video::find($note->video_id);
         
         $note_title = $note->title;
         
+        $note->tags()->sync([]);
         $note->delete();
         $video->delete();
 
