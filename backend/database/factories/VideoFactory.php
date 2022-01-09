@@ -15,8 +15,8 @@ class VideoFactory extends Factory
     public function definition()
     {
         return [
-            'yt_video_id' => $this->faker->randomElements($array = array('vVaFIMul_08', 'nwEWuaIpdOo', 'CGq4-rqnBgs', 'a37VfzdDswE', 'IblUogq9gOw')),
-            'start_seconds' => $this->faker->randomElements($array = array(30, 60, 90, 120, 150)),
+            'yt_video_id' => $this->faker->randomElement($array = array('vVaFIMul_08', 'nwEWuaIpdOo', 'CGq4-rqnBgs', 'a37VfzdDswE', 'IblUogq9gOw')),
+            'start_seconds' => $this->faker->randomElement($array = array(30, 60, 90, 120, 150)),
         ];
     }
 }
