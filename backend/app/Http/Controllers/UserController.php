@@ -12,11 +12,11 @@ class UserController extends Controller
     /**
      * ユーザー詳細ページを表示
      * @return view
-     * @param int $id
+     * @param string $username
      */
-    public function show($id)
+    public function show($username)
     {
-        $user = User::find($id);
+        $user = User::where('username', $username)->first();
         return view('users.show',[
             'user' => $user,
         ]);
@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function edit()
     {
-        $user = User::find(Auth::id());
+        $user = Auth::user();
    
         return view('users.edit',[
             'user' => $user,
@@ -38,10 +38,11 @@ class UserController extends Controller
     /**
      * ユーザー情報を更新
      * @return view
+     * @param array $request
      */
     public function update(Request $request)
     {
-        $user = User::find(Auth::id());
+        $user = Auth::user();
 
         $user->name = $request->name;
         $user->username = $request->username;
@@ -61,6 +62,6 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect(route('users.show', $user->id));
+        return redirect(route('users.show', $user->username));
     }
 }

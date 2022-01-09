@@ -29,11 +29,10 @@ Route::prefix('notes')->name('notes.')->group(function() {
 });
 
 // Todo：認証済ユーザーが自分のページだけ編集などできるようにルーティングを設定
-Route::prefix('users')->name('users.')->group(function() {
-    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
-    Route::post('/{id}/update', [UserController::class, 'update'])->name('update');
-
-    Route::get('/{id}', [UserController::class, 'show'])->name('show');
+Route::name('users.')->group(function() {
+    Route::get('/{username}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::post('/{username}/update', [UserController::class, 'update'])->name('update');
+    Route::get('/{username}', [UserController::class, 'show'])->name('show');
 });
 
 Auth::routes();
