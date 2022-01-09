@@ -4,7 +4,7 @@
 <div class="section UserEdit">
     <div class="section__inner">
         <div class="user-edit">
-            <form action="{{ route('users.update', $user->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('users.update', $user->username) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="name">お名前</label>

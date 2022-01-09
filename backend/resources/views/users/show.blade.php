@@ -4,6 +4,7 @@
 <div class="section UserDetail">
     <div class="section__inner">
         <div class="user-detail">
+            
             <div class="thumbnail">
             @if ($user->thumbnail)
                 <img src="{{ asset($user->thumbnail) }}">
@@ -13,7 +14,7 @@
             </div>
             <h2 class="name">{{ $user->name }}  <span class="username">{{ "@" . $user->username }}</span></h2>
             @if (Auth::check() && $user->id === Auth::id())
-                <div class="edit-button"><a href="{{ route('users.edit', $user->id) }}">プロフィールを編集</a></div>
+                <div class="edit-button"><a href="{{ route('users.edit', $user->username) }}">プロフィールを編集</a></div>
             @endif
             <p class="introduction">
             @if (empty($user->introduction))
