@@ -59,11 +59,11 @@
                             @endif
                         </div>
                         <div class="form__item">
-                            <label for="start_seconds">再生位置（秒で指定）</label>
-                            <input type="number" name="start_seconds" id="start_seconds" class="{{ $errors->has('start_seconds') ? 'is-invalid' : '' }}" value="{{ $note->video->start_seconds }}">
-                            @if ($errors->has('start_seconds'))
-                            <div class="form__error-msg">{{ $errors->first('start_seconds') }}</div>
-                            @endif
+                            <label class="form-label" for="start_seconds">再生位置（時:分:秒）</label>
+                            <input type="number" min="0"　name="start_seconds_h" id="start_seconds_h" class="form-control {{ $errors->has('start_seconds_h') ? 'is-invalid' : '' }}" value="{{ $start_seconds[0] }}"> : <input type="number" min="0" max="59"　name="start_seconds_m" id="start_seconds_m" class="form-control {{ $errors->has('start_seconds_m') ? 'is-invalid' : '' }}" value="{{ $start_seconds[1] }}"> : <input type="number" min="0" max="59"　name="start_seconds_s" id="start_seconds_s" class="form-control {{ $errors->has('start_seconds_s') ? 'is-invalid' : '' }}" value="{{ $start_seconds[2] }}">
+                        @if ($errors->has('start_seconds'))
+                            <div class="text-danger">{{ $errors->first('start_seconds') }}</div>
+                        @endif
                         </div>
                         <div class="form__item">
                             <label for="tags">タグ（複数のタグを追加する場合にはスペースで区切ってください）</label>

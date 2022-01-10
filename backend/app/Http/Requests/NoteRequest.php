@@ -26,7 +26,9 @@ class NoteRequest extends FormRequest
         return [
             'title' => 'required',
             'video_url' => 'required | active_url',
-            'start_seconds' => 'sometimes | nullable | numeric | min:0',
+            "start_seconds_h" => 'sometimes | nullable | numeric | min:0',
+            'start_seconds_m' => 'sometimes | nullable | numeric | min:0 | max:59',
+            'start_seconds_s' => 'sometimes | nullable | numeric | min:0 | max:59',
             'tags' => 'nullable',
             'content' => 'required',
         ];
