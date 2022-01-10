@@ -36,11 +36,13 @@ class NoteController extends Controller
         $yt_video_id = Note::getYtVideoId($video_url);
         $video->yt_video_id = $yt_video_id;
         
-        if (!empty($request->start_seconds)) {
-            $video->start_seconds = $request->start_seconds;
-        } else {
-            $video->start_seconds = 0;
-        }
+        $h = $request->start_seconds_h;
+        $m = $request->start_seconds_m;
+        $s = $request->start_seconds_s;
+        $start_seconds = Note::hourToSec($h, $m, $s);
+
+        $video->start_seconds = $start_seconds;
+        
         $video->save(); 
 
         $tags_id = Note::saveTagsAndGetIds($request->tags);
@@ -68,11 +70,12 @@ class NoteController extends Controller
         $yt_video_id = Note::getYtVideoId($video_url);
         $video->yt_video_id = $yt_video_id;
         
-        if (!empty($request->start_seconds)) {
-            $video->start_seconds = $request->start_seconds;
-        } else {
-            $video->start_seconds = 0;
-        }
+        $h = $request->start_seconds_h;
+        $m = $request->start_seconds_m;
+        $s = $request->start_seconds_s;
+        $start_seconds = Note::hourToSec($h, $m, $s);
+
+        $video->start_seconds = $start_seconds;
 
         $video->save();
 
@@ -121,8 +124,11 @@ class NoteController extends Controller
     public function show(int $id)
     {
         $note =  Note::find($id);
+
+        $start_seconds = Note::secToHour($note->video->start_seconds);
         return view('notes.show', [
             'note' => $note,
+            'start_seconds' => $start_seconds,
         ]);
     }
 }

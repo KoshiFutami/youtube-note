@@ -52,6 +52,32 @@ class Note extends Model
     }
 
     /**
+     *  入力された動画の再生位置を時間・分から秒に変換
+     */
+    public static function hourToSec(string $h, string $m, string $s): int
+    {
+        $h = (int) $h;
+        $m = (int) $m;
+        $s = (int) $s;
+
+        return ($h * 60 * 60) + ($m * 60) + $s;
+    }
+
+    /**
+     *  秒の再生位置を時間・分・秒の配列に変換
+     */
+    public static function secToHour(int $sec): array
+    {
+        $h = floor($sec / 3600);
+        $m = floor(($sec / 60) % 60);
+        $s = floor($sec % 60);
+
+        $time =  [$h, $m, $s];
+
+        return $time;
+    }
+
+    /**
      * 入力されたタグを登録してidを配列にまとめる
      */
     public static function saveTagsAndGetIds($request_tags)
