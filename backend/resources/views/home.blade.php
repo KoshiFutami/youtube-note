@@ -12,9 +12,12 @@
                 <div class="note__figure">
                     <img src="https://img.youtube.com/vi/{{ $note->video->yt_video_id }}/mqdefault.jpg">
                 </div>
-                <div class="note__info">
-                    <div class="note__title">{{ $note->title }}</div>
-                    <div class="note__user">{{ $note->user->name }}</div>
+                <div class="note__title">{{ $note->title }}</div>
+                <div class="note__user">
+                    <div class="thumbnail">
+                        <img src="{{ $note->user->thumbnail }}" alt="">
+                    </div>
+                    <div class="username">{{ '@' . $note->user->username }}</div>
                 </div>
             </a>
         @endforeach

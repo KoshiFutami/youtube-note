@@ -10939,6 +10939,54 @@ $(function () {
 
     reader.readAsDataURL(file);
   });
+}); // ボタンを押してナビゲーションを表示
+
+$(function () {
+  var $noteNav = $('#js-note-nav');
+  var $noteNavButton = $('#js-note-nav-button');
+  var $noteNavBg = $('#js-note-nav-bg');
+  var $noteNavEdit = $('#js-note-nav-edit');
+  var $noteEdit = $('#js-note-edit');
+  var $noteEditBg = $('#js-note-edit-bg');
+  var $noteEditClose = $('#js-note-edit-close');
+  var $noteEditCancel = $('#js-note-edit-cancel');
+  var ACTIVE_CLASS = 'is-active';
+  var FIXED_CLASS = 'is-fixed'; // 入力エラー時に強制的にアクティブクラスを付与
+
+  if ($noteEdit.hasClass(ACTIVE_CLASS)) {
+    $noteEditBg.addClass(ACTIVE_CLASS);
+    $('html, body').css('overflow', 'hidden');
+  }
+
+  $noteNavButton.on('click', function () {
+    $noteNav.addClass(ACTIVE_CLASS);
+    $noteNavBg.addClass(ACTIVE_CLASS);
+  });
+  $noteNavEdit.on('click', function () {
+    $noteEdit.addClass(ACTIVE_CLASS);
+    $noteEditBg.addClass(ACTIVE_CLASS);
+    $('html, body').css('overflow', 'hidden');
+  });
+  $noteNavBg.on('click', function () {
+    $noteNav.removeClass(ACTIVE_CLASS);
+    $noteNavBg.removeClass(ACTIVE_CLASS);
+  });
+  $noteEditClose.on('click', function () {
+    closeNoteEdit();
+  });
+  $noteEditBg.on('click', function () {
+    closeNoteEdit();
+  });
+  $noteEditCancel.on('click', function () {
+    closeNoteEdit();
+  });
+
+  function closeNoteEdit() {
+    $noteEdit.removeClass(ACTIVE_CLASS);
+    $noteEditBg.removeClass(ACTIVE_CLASS);
+    $noteNavBg.removeClass(ACTIVE_CLASS);
+    $('html, body').css('overflow', 'auto');
+  }
 });
 })();
 
