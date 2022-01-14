@@ -27,7 +27,7 @@
                 </div>
                 <div class="note-form__item">
                     <label for="start_seconds">再生位置<span class="instruction">（時:分:秒）</span></label>
-                    <input type="number" min="0"　name="start_seconds_h" id="start_seconds_h" class="{{ $errors->has('start_seconds_h') ? 'is-invalid' : '' }}" value="{{ old('start_seconds_h') }}"> : <input type="number" min="0" max="59"　name="start_seconds_m" id="start_seconds_m" class="{{ $errors->has('start_seconds_m') ? 'is-invalid' : '' }}" value="{{ old('start_seconds_m') }}"> : <input type="number" min="0" max="59"　name="start_seconds_s" id="start_seconds_s" class="{{ $errors->has('start_seconds_s') ? 'is-invalid' : '' }}" value="{{ old('start_seconds_s') }}">
+                    <input type="number" min="0"　name="start_seconds_h" id="start_seconds_h" class="{{ $errors->has('start_seconds_h') ? 'is-invalid' : '' }}" value="{{ old('start_seconds_h', 0) }}"> : <input type="number" min="0" max="59"　name="start_seconds_m" id="start_seconds_m" class="{{ $errors->has('start_seconds_m') ? 'is-invalid' : '' }}" value="{{ old('start_seconds_m', 0) }}"> : <input type="number" min="0" max="59"　name="start_seconds_s" id="start_seconds_s" class="{{ $errors->has('start_seconds_s') ? 'is-invalid' : '' }}" value="{{ old('start_seconds_s', 0) }}">
                 @if ($errors->has('start_seconds'))
                     <div class="text-danger">{{ $errors->first('start_seconds') }}</div>
                 @endif
