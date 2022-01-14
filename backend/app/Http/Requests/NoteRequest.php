@@ -57,11 +57,20 @@ class NoteRequest extends FormRequest
      */
     public function withValidator($validator)
     {
+        
         $validator->after(function ($validator) {
+
+            $video_url = $this->input('video_url');
+            $is_full_url = (strpos($video_url, 'https://www.youtube.com/') !== false);
+            $is_short_url = (strpos($video_url, 'https://youtu.be/') !== false);
+            $is_invalid_url = ($is_full_url === false) && ($is_short_url === false);
+
             if ($this->filled('video_url')) {
-                if (strpos($this->input('video_url'), 'https://www.youtube.com/') === false) {
+                if ($is_invalid_url) {
                     $validator->errors()->add('video_url', 'YouTube動画のURLを貼り付けてください。');
-                } else if (strpos($this->input('video_url'), 'v=') ===false) {
+                } else if ($is_full_url && (strpos($video_url, 'v=') === false)) {
+                    $validator->errors()->add('video_url', '動画ページのURLをそのまま貼り付けてください。');
+                } else if ($is_short_url && (int) mb_strlen($video_url, "UTF-8") !== 28) {
                     $validator->errors()->add('video_url', '動画ページのURLをそのまま貼り付けてください。');
                 }
             }

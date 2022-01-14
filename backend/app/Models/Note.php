@@ -45,8 +45,17 @@ class Note extends Model
      */
     public static function getYtVideoId($video_url)
     {
-        $yt_video_id_pos = strpos($video_url, 'v=');
-        $yt_video_id = substr($video_url, $yt_video_id_pos + 2, 11);
+        // Todo: 一箇所にまとめる
+        $is_full_url = (strpos($video_url, 'https://www.youtube.com/') !== false);
+        $is_short_url = (strpos($video_url, 'https://youtu.be/') !== false);
+
+        if ($is_full_url) {
+            $yt_video_id_pos = strpos($video_url, 'v=');
+            $yt_video_id = substr($video_url, $yt_video_id_pos + 2, 11);
+        } else if ($is_short_url) {
+            $yt_video_id_pos = strpos($video_url, 'be/');
+            $yt_video_id = substr($video_url, $yt_video_id_pos + 3, 11);
+        }
 
         return $yt_video_id;
     }
