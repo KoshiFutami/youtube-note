@@ -13,16 +13,9 @@ class Note extends Model
         'title',
         'content',
         'user_id',
-        'video_id',
+        'yt_video_id',
+        'start_seconds',
     ];
-
-    /**
-     * このメモに関連する動画を取得
-     */
-    public function video()
-    {
-        return $this->belongsTo(Video::class);
-    }
 
     /**
      * このメモを投稿したユーザーを取得

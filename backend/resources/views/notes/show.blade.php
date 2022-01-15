@@ -9,7 +9,7 @@
     <div class="section__inner">
         <div class="note-detail">
             <div class="note-detail__figure">
-                <iframe style="width:100%;aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/{{ $note->video->yt_video_id }}?start={{ $note->video->start_seconds }}" frameborder="0" allowfullscreen></iframe>
+                <iframe style="width:100%;aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/{{ $note->yt_video_id }}?start={{ $note->start_seconds }}" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="note-detail__info">
             @if (Auth::check() && $note->user_id === Auth::id())
@@ -37,7 +37,11 @@
                 </div>
                 <a href="/{{ $note->user->username }}" class="note-detail__user">
                     <div class="thumbnail">
-                        <img src="{{ asset($note->user->thumbnail) }}" alt="{{ $note->user->name }}">
+                    @if ($note->user->thumbnail)
+                        <img src="{{ asset($note->user->thumbnail) }}">
+                    @else
+                        <img src="{{ asset('image/user_thumbnail_default.jpg') }}">
+                    @endif
                     </div>
                     <div class="username">{{ '@' . $note->user->username }}</div>
                 </a>
@@ -60,7 +64,7 @@
                     </div>
                     <div class="note-form__item">
                         <label for="video_url">YouTube動画のURL<span　class="is-required">※必須</span></label>
-                        <input type="text" name="video_url" id="video_url" class="{{ $errors->has('video_url') ? 'is-invalid' : '' }}" value="https://www.youtube.com/watch?v={{ $note->video->yt_video_id }}">
+                        <input type="text" name="video_url" id="video_url" class="{{ $errors->has('video_url') ? 'is-invalid' : '' }}" value="https://www.youtube.com/watch?v={{ $note->yt_video_id }}">
                         @if ($errors->has('video_url'))
                         <div class="note-form__error">{{ $errors->first('video_url') }}</div>
                         @endif
