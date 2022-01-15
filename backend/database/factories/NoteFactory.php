@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class NoteFactory extends Factory
@@ -21,9 +20,8 @@ class NoteFactory extends Factory
             'user_id' => function () {
                 return User::factory()->create()->id;
             },
-            'video_id' => function () {
-                return Video::factory()->create()->id;
-            },
+            'yt_video_id' => $this->faker->randomElement($array = array('vVaFIMul_08', 'nwEWuaIpdOo', 'CGq4-rqnBgs', 'a37VfzdDswE', 'IblUogq9gOw', 'NL0YRlVZ9Rc', 'ye3n5_tr8vg')),
+            'start_seconds' => $this->faker->randomElement($array = array(30, 60, 90, 120, 150)),
         ];
     }
 }

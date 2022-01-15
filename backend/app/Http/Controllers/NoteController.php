@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\NoteRequest;
 
 use App\Models\Note;
-use App\Models\Video;
 
 class NoteController extends Controller
 {
@@ -29,26 +28,22 @@ class NoteController extends Controller
         $note = new Note();
         $note->fill($request->all());
 
-        $video = new Video();
-        $video->fill($request->all());
+        $note->user_id = auth()->id();
         
+        // YouTube動画IDの登録
         $video_url = $request->video_url;
         $yt_video_id = Note::getYtVideoId($video_url);
-        $video->yt_video_id = $yt_video_id;
+        $note->yt_video_id = $yt_video_id;
         
+        // YouTube動画再生時間の登録
         $h = $request->start_seconds_h;
         $m = $request->start_seconds_m;
         $s = $request->start_seconds_s;
         $start_seconds = Note::hourToSec($h, $m, $s);
-
-        $video->start_seconds = $start_seconds;
+        $note->start_seconds = $start_seconds;
         
-        $video->save(); 
-
         $tags_id = Note::saveTagsAndGetIds($request->tags);
 
-        $note->video_id = $video->id;
-        $note->user_id = auth()->id();
         $note->save(); 
         $note->tags()->sync($tags_id);
 
@@ -64,20 +59,19 @@ class NoteController extends Controller
     public function update(NoteRequest $request, int $id)
     {
         $note = Note::find($id);
-        $video = Video::find($note->video_id);
 
         $video_url = $request->video_url;
         $yt_video_id = Note::getYtVideoId($video_url);
-        $video->yt_video_id = $yt_video_id;
+        $note->yt_video_id = $yt_video_id;
         
         $h = $request->start_seconds_h;
         $m = $request->start_seconds_m;
         $s = $request->start_seconds_s;
         $start_seconds = Note::hourToSec($h, $m, $s);
 
-        $video->start_seconds = $start_seconds;
+        $note->start_seconds = $start_seconds;
 
-        $video->save();
+        $note->save();
 
         $tags_id = Note::saveTagsAndGetIds($request->tags);
 
@@ -105,13 +99,11 @@ class NoteController extends Controller
     public function destroy(int $id)
     {
         $note = Note::find($id);
-        $video = Video::find($note->video_id);
         
         $note_title = $note->title;
         
         $note->tags()->sync([]);
         $note->delete();
-        $video->delete();
 
         // Todo: リダイレクト先をユーザーのメモ一覧ページに修正
         return redirect()->route('home');
@@ -123,9 +115,9 @@ class NoteController extends Controller
      */
     public function show(int $id)
     {
-        $note =  Note::find($id);
+        $note =  Note::findOrFail($id);
 
-        $start_seconds = Note::secToHour($note->video->start_seconds);
+        $start_seconds = Note::secToHour($note->start_seconds);
         return view('notes.show', [
             'note' => $note,
             'start_seconds' => $start_seconds,
