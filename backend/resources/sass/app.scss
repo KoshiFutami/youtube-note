@@ -268,6 +268,12 @@ note-detail
         color: #9e9e9e;
         cursor: pointer;
         transition: .2s;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         @include tab {
             top: 32px;
             right: 40px;
@@ -278,10 +284,9 @@ note-detail
         }
         &:hover {
             color: #313131;
+            background: #F6F9F9;
         }
         .material-icons {
-            width: 100%;
-            height: 100%;
         }
     }
     .note-detail__nav-bg {
@@ -461,19 +466,28 @@ note-edit
         position: absolute;
         top: 20px;
         right: 20px;
-        background: rgba(0, 0, 0, 0.05);
+        color: #9e9e9e;
+        cursor: pointer;
+        transition: .2s;
+        border-radius: 50%;
         width: 40px;
         height: 40px;
-        border-radius: 50%;
-        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
-        .material-icons {
-            font-size: 1.4rem;
+        @include tab {
+            top: 32px;
+            right: 40px;
+        }
+        @include sp {
+            top: 16px;
+            right: 24px;
+        }
+        &:hover {
             color: #313131;
-
+            background: #F6F9F9;
+        }
+        .material-icons {
         }
     }
 }
@@ -526,7 +540,7 @@ note-form
             border: 2px solid transparent;
             font-size: 16px;
             padding: 8px 12px;
-            background: #eee;
+            background: #F6F9F9;
             color: #313131;
             border-radius: 6px;
             &:focus {
@@ -542,7 +556,7 @@ note-form
             border: 2px solid transparent;
             font-size: 16px;
             padding: 8px 12px;
-            background: #eee;
+            background: #F6F9F9;
             width: 72px;
             color: #313131;
             border-radius: 6px;
@@ -561,7 +575,7 @@ note-form
             border: 2px solid transparent;
             font-size: 16px;
             padding: 8px 12px;
-            background: #eee;
+            background: #F6F9F9;
             color: #313131;
             border-radius: 6px;
             &:focus {
