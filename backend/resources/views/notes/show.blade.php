@@ -26,11 +26,13 @@
                     </div>
                 </div>
             @endif
+            @if (count($note->tags) > 0)
                 <div class="note-detail__tags">
                 @foreach ($note->tags as $tag)
                     <span class="note-detail__tag">{{ $tag->name }}</span>
                 @endforeach
                 </div>
+            @endif
                 <h2 class="note-detail__title">{{ $note->title }}</h2>
                 <div class="note-detail__content">
                     <p>{!! nl2br(e($note->content)) !!}</p>

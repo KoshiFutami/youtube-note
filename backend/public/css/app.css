@@ -11681,6 +11681,7 @@ note-detail
 .note-detail .note-detail__tags {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 .note-detail .note-detail__tag {
   display: inline-block;
@@ -11698,7 +11699,7 @@ note-detail
 .note-detail .note-detail__title {
   color: #212121;
   font-size: 1.6rem;
-  margin: 16px 0 0;
+  margin: 0 0;
 }
 .note-detail .note-detail__content {
   color: #515151;
