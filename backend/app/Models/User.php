@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Note;
 use Image;
 use Storage;
 
@@ -47,6 +48,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * ユーザーが投稿したメモを取得
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
 
     /**
      * プロフィール画像を保存
