@@ -59,6 +59,7 @@ $(function() {
     function closeNoteEdit() {
         $noteEdit.removeClass(ACTIVE_CLASS);
         $noteEditBg.removeClass(ACTIVE_CLASS);
+        $noteNav.removeClass(ACTIVE_CLASS);
         $noteNavBg.removeClass(ACTIVE_CLASS);
         $('html, body').css('overflow', 'auto');
     }
