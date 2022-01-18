@@ -17,7 +17,7 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'username' => $this->faker->word(),
+            'username' => $this->faker->unique()->word(),
             'introduction' => $this->faker->text(),
             'thumbnail' => 'image/user_thumbnail_testuser' .   $this->faker->randomDigitNotNull() . '.jpg',
             'email_verified_at' => now(),
