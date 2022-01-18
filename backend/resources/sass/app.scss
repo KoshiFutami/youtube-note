@@ -120,14 +120,10 @@ section
     .section__inner {
         margin: auto;
         max-width: 880px;
-        padding: 80px 40px;
+        padding: 56px 40px;
         @include tab {
             padding-right: 24px;
             padding-left: 24px;
-        }
-        @include se {
-            padding-right: 16px;
-            padding-left: 16px;
         }
     }
 }
@@ -135,10 +131,12 @@ section
 section-title
 ---------------------------------*/
 .section-title {
-    font-size: 1.8rem;
+    color: #212121;
+    font-size: 1.4rem;
     font-weight: bold;
     margin: 0;
-    text-align: center;
+    text-align: left;
+    line-height: 1.5;
 }
 
 /*---------------------------------
@@ -167,7 +165,39 @@ notes-list
         }
     }
 }
-
+.section-title + .notes-list {
+    margin-top: 24px;
+}
+.notes-list + .section-title {
+    margin-top: 32px;
+}
+/*  
+notes-list-button
+---------------------------------*/
+.notes-list-button {
+    display: inline-block;
+    margin-left: 16px;
+    @include sp {
+        display: table;
+        margin-left: 0;
+    }
+    a {
+        color: #9e9e9e;
+        font-size: .8rem;
+        font-weight: normal;
+        line-height: 1.2;
+        font-feature-settings: "palt";
+        letter-spacing: .1em;
+        display: flex;
+        align-items: center;
+        .material-icons {
+            font-size: inherit;
+        }
+    }
+    a:hover {
+        color: #313131;
+    }
+}
 /*  
 note
 ---------------------------------*/
