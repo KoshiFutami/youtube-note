@@ -8,7 +8,8 @@
     <div class="section__inner">
         <h2 class="section-title">みんなが投稿した最近のメモ</h2>
         <div class="notes-list">
-        @foreach ($notes as $note)
+        @if (!$notes->isEmpty())
+            @foreach ($notes as $note)
             <a href="/notes/{{ $note->id }}" class="note">
                 <div class="note__figure">
                     <img src="https://img.youtube.com/vi/{{ $note->yt_video_id }}/mqdefault.jpg">
@@ -25,10 +26,14 @@
                     <div class="username">{{ '@' . $note->user->username }}</div>
                 </div>
             </a>
-        @endforeach
+            @endforeach
+        @else
+            <p>メモが1件も投稿されていません。</p>
+        @endif
         </div>
     </div>
 </div>
+@if (!$popular_tags->isEmpty())
 <div class="section PopularTags">
     <div class="section__inner">
         <h2 class="section-title">
@@ -55,6 +60,8 @@
             </a>
         @endforeach
         </div>
+
+        @if (isset($popular_tags[1]))
         <h2 class="section-title">
             人気タグ「#{{ $popular_tags[1]->name }}」<span>投稿数2位</span>
             <div class="notes-list-button"><a href="">「#{{ $popular_tags[1]->name }}」のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
@@ -79,7 +86,9 @@
             </a>
         @endforeach
         </div>
-        
+        @endif
+
+        @if (isset($popular_tags[2]))
         <h2 class="section-title">
             人気タグ「#{{ $popular_tags[2]->name }}」<span>投稿数3位</span>
             <div class="notes-list-button"><a href="">「#{{ $popular_tags[2]->name }}」のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
@@ -104,6 +113,9 @@
             </a>
         @endforeach
         </div>
+        @endif
+        
     </div>
 </div>
+@endif
 @endsection

@@ -23,7 +23,7 @@ class HomeController extends Controller
 
         $popular_tags_notes = [];
         foreach ($popular_tags as $index => $tag) {
-            $popular_tags_notes[$index] = $tag->notes()->orderBy('created_at', 'DESC')->take(2)->get();
+            $popular_tags_notes[$index] = $tag->notes()->orderBy('created_at', 'DESC')->take(3)->get();
         }
 
         return view('home', [
