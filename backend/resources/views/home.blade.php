@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'YouTube Note｜あなたの動画学習をブーストして効率的にスキルアップ！')
-@section('description', 'YouTube動画を使って語学やスポーツの勉強をしている時、「この部分をまたすぐに見ることができたら良いのに」と思ったことはありませんか？YouTube Noteを導入することで、あなたがもう1度見たい動画の場面を一言メモと一緒に残して、後からサクッと効率的に動画を見直せるようになります。')
+@section('title', 'SOKOMIRU｜あなたの動画学習をブーストして効率的にスキルアップ！')
+@section('description', 'YouTube動画を使って語学やスポーツの勉強をしている時、「この部分をまたすぐに見ることができたら良いのに」と思ったことはありませんか？SOKOMIRUを導入することで、あなたがもう1度見たい動画の場面を一言メモと一緒に残して、後からサクッと効率的に動画を見直せるようになります。')
 
 @section('content')
 <div class="section RecentNotes">

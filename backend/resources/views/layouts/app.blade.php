@@ -18,72 +18,79 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app" class="app-wrapper">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+        <header class="header">
+            <div class="header__inner">
+                
+                <a class="header__logo" href="{{ url('/') }}">SOKOMIRU</a>
+                <nav class="header__gnav">
+                    <ul>
+                        <li><a href="">タグ一覧</a></li>
+                        <li><a href="">検索</a></li>
+                    @if (Auth()->check())
+                        <li><a href="{{ route('notes.create') }}">メモを追加</a></li>
+                        <li><a href="">登録したメモ一覧</a></li>
+                    @else
+                        <li><a href="{{ route('login') }}">ログイン</a></li>
+                        <li><a href="{{ route('register') }}">ユーザー登録</a></li>
+                    @endif
                     </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
+                </nav>
+            @if (Auth()->check())
+                <div class="header__usernav">
+                    <div class="header__usernav__thumb" id="js-user-thumbnail">
+                    @if (Auth::user()->thumbnail)
+                        <img src="{{ Auth::user()->thumbnail }}">
+                    @else
+                        <img src="{{ asset('image/user_thumbnail_default.jpg') }}">
+                    @endif
+                    </div>
+                    <div class="header__usernav__dropdown" id="js-user-nav-dropdown">
+                        <div class="head">
+                            <div class="thumb">
+                            @if (Auth::user()->thumbnail)
+                                <img src="{{ Auth::user()->thumbnail }}">
+                            @else
+                                <img src="{{ asset('image/user_thumbnail_default.jpg') }}">
                             @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('users.show', Auth::user()->username) }}">
-                                        プロフィール
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                            </div>
+                            <div class="username"><span>{{ Auth::user()->name }}</span></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="{{ route('users.show', Auth::user()->username) }}"><i class="material-icons">account_box</i>マイページ</a>
                             </li>
-                        @endguest
-                    </ul>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i class="material-icons">logout</i>ログアウト</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </nav>
+            @endif
+        </header>
 
         <main class="main">
             @yield('content')
         </main>
+
+        <footer class="footer">
+            <div class="footer__inner">
+                <nav class="footer__nav">
+                    <a href="" class="footer__nav__item">運営者情報</a>
+                    <a href="" class="footer__nav__item">お問い合わせ</a>
+                </nav>
+                <div class="footer__copyright">Copyright © {{ date('Y') }} Video Note</div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

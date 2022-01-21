@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'ログイン｜YouTube Note')
-@section('description', 'こちらはYouTube Noteのユーザーログインページです。YouTube Noteは、YouTube動画の場面をちょっとしたメモと一緒にアプリに残すことができるアプリです。')
+@section('title', 'ログイン｜SOKOMIRU')
+@section('description', 'こちらはSOKOMIRUのユーザーログインページです。SOKOMIRUは、YouTube動画の場面をちょっとしたメモと一緒にアプリに残すことができるアプリです。')
 
 @section('content')
 <div class="container">

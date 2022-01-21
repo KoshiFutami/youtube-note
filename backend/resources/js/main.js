@@ -66,3 +66,14 @@ $(function() {
 
 });
 
+
+// ドロップダウンメニューの表示
+$(function() {
+    const $userThumbnail = $('#js-user-thumbnail');
+    const $userNavDropdown = $('#js-user-nav-dropdown');
+    const ACTIVE_CLASS = 'is-active';
+
+    $userThumbnail.on('click', function() {
+        $userNavDropdown.toggleClass(ACTIVE_CLASS);
+    });
+});

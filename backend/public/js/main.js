@@ -10988,6 +10988,15 @@ $(function () {
     $noteNavBg.removeClass(ACTIVE_CLASS);
     $('html, body').css('overflow', 'auto');
   }
+}); // ドロップダウンメニューの表示
+
+$(function () {
+  var $userThumbnail = $('#js-user-thumbnail');
+  var $userNavDropdown = $('#js-user-nav-dropdown');
+  var ACTIVE_CLASS = 'is-active';
+  $userThumbnail.on('click', function () {
+    $userNavDropdown.toggleClass(ACTIVE_CLASS);
+  });
 });
 })();
 

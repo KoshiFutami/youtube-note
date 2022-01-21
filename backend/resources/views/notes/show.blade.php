@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $note->title . '｜' . $note->user->name . '｜YouTube Note')
+@section('title', $note->title . '｜' . $note->user->name . '｜SOKOMIRU')
 @section('description', $note->user->name . 'さんのメモ「' . $note->title . '」をご覧いただけます。')
 
 @section('content')
