@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $user->name . '｜YouTube Note')
+@section('title', $user->name . '｜SOKOMIRU')
 @section('description', $user->introduction)
 
 @section('content')
@@ -27,7 +27,7 @@
                 {!! nl2br(e($user->introduction)) !!}
             @endif
             </p>
-            <p class="registration">{{ $user->created_at->format('Y年m月') }}からYouTube Noteを利用しています</p>
+            <p class="registration">{{ $user->created_at->format('Y年m月') }}からSOKOMIRUを利用しています</p>
         </div>
     </div>
 </div>
