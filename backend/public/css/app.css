@@ -11408,6 +11408,49 @@ app-wrapper
 /*  
 フッター
 ---------------------------------*/
+.footer {
+  background: #1e1e1e;
+}
+.footer .footer__inner {
+  padding: 16px 40px;
+}
+@media (max-width: 767px) {
+  .footer .footer__inner {
+    padding: 12px 24px;
+  }
+}
+@media (max-width: 499px) {
+  .footer .footer__inner {
+    padding: 12px 16px;
+  }
+}
+.footer .footer__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.footer .footer__nav .footer__nav__item {
+  display: block;
+  color: #fff;
+  font-size: 0.85rem;
+}
+@media (min-width: 960px) {
+  .footer .footer__nav .footer__nav__item:hover {
+    text-decoration: underline;
+  }
+}
+.footer .footer__nav .footer__nav__item + .footer__nav__item {
+  margin-left: 24px;
+}
+.footer .footer__copyright {
+  margin-top: 12px;
+  color: #fff;
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
 /*---------------------------------
 コンテンツ部分
 ---------------------------------*/
