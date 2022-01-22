@@ -11411,7 +11411,7 @@ app-wrapper
   top: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 5;
   border-bottom: #e6e6e6;
 }
 .header .header__inner {
@@ -11517,6 +11517,7 @@ app-wrapper
   display: flex;
   align-items: center;
   height: 100%;
+  z-index: 9;
 }
 .header .header__usernav__thumb:hover {
   opacity: 0.7;
@@ -11543,7 +11544,6 @@ app-wrapper
   display: block;
   opacity: 0;
   pointer-events: none;
-  z-index: 2;
   background: #fff;
   border: 1px solid #dedede;
   padding: 16px 0;
@@ -11555,7 +11555,6 @@ app-wrapper
 }
 .header .header__usernav__dropdown .thumb {
   border-radius: 50%;
-  cursor: pointer;
   position: relative;
 }
 .header .header__usernav__dropdown .thumb img {
@@ -11601,6 +11600,25 @@ app-wrapper
 .header .header__usernav__dropdown.is-active {
   opacity: 1;
   pointer-events: auto;
+  z-index: 10;
+}
+.header .header__usernav__dropdown-bg {
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}
+.header .header__usernav__dropdown-bg.is-active {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
 }
 
 /*  
@@ -11893,7 +11911,7 @@ note-detail
   background: #F6F9F9;
 }
 .note-detail .note-detail__nav-bg {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
   right: 0;
