@@ -32,7 +32,7 @@
                 <nav class="header__gnav">
                     <ul>
                         <li><a href="">タグ一覧</a></li>
-                        <li><a href="">検索</a></li>
+                        <li><a href="{{ route('notes.search') }}">検索</a></li>
                     @if (Auth()->check())
                         <li><a href="{{ route('notes.create') }}">メモを追加</a></li>
                         <li><a href="">登録したメモ一覧</a></li>

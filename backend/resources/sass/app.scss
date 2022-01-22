@@ -955,3 +955,52 @@ note-form
         }
     }
 }
+/*  
+search-form
+---------------------------------*/
+.search-form {
+    display: block;
+    margin: 0 auto 48px;
+    position: relative;
+    @include sp {
+        margin-bottom: 32px;
+    }
+    .search-form__input {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+        border: 2px solid transparent;
+        font-size: 16px;
+        padding: 8px 12px;
+        background: #F6F9F9;
+        color: #313131;
+        border-radius: 6px;
+        &:focus {
+            border-color: #096fc8;
+        }
+        &.is-invalid {
+            border-color: #e15036;
+        }
+    }
+    .search-form__button {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 100%;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+}
+/*  
+search-form-message
+---------------------------------*/
+.search-form-message {
+    span {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}

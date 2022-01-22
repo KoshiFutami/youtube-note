@@ -27,6 +27,7 @@ Route::prefix('notes')->name('notes.')->group(function() {
         Route::get('/{id}/edit', [NoteController::class, 'edit'])->name('edit');
         Route::post('/{id}/update', [NoteController::class, 'update'])->name('update');
     });
+    Route::get('/search', [NoteController::class, 'search'])->name('search');
     Route::get('/{id}', [NoteController::class, 'show'])->name('show');
 });
 

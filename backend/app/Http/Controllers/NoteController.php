@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\NoteRequest;
 
 use App\Models\Note;
+use Illuminate\Database\Eloquent\Builder;
 
 class NoteController extends Controller
 {
@@ -123,4 +124,41 @@ class NoteController extends Controller
             'start_seconds' => $start_seconds,
         ]);
     }
+
+     /**
+      * メモ検索ページを表示
+      * @return view
+      */
+      public function search(Request $request)
+      {
+          if ($request->keywords) {
+
+            $query = Note::query();
+
+            // 全角スペースを半角スペースに変換し
+            $input = mb_convert_kana($request->keywords, 's', 'utf-8');
+            // 半角スペースで区切り、配列に挿入
+            $keywords = preg_split('/ ++/', $input, -1, PREG_SPLIT_NO_EMPTY);
+
+            foreach ($keywords as $keyword) {
+                $query->where(function ($query) use ($keyword) {
+                    $query->where("title", "like", "%{$keyword}%")
+                        ->orWhere("content", "like", "{$keyword}%")
+                        ->orWhereHas("tags", function (Builder $query) use ($keyword) {
+                            $query->where("name", "like", "%{$keyword}%");
+                        });
+                });
+            }
+
+            $notes = $query->get();
+
+            return view('notes.search', [
+                'notes' => $notes,
+                'keywords' => $request->keywords,
+            ]);
+
+          } else {
+                return view('notes.search');
+          }
+      }
 }
