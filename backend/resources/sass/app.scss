@@ -103,7 +103,7 @@ app-wrapper
     top: 0;
     left: 0;
     right: 0;
-    z-index: 99;
+    z-index: 5;
     border-bottom: #e6e6e6;
     .header__inner {
         max-width: 1120px;
@@ -202,6 +202,7 @@ app-wrapper
         display: flex;
         align-items: center;
         height: 100%;
+        z-index: 9;
         &:hover {
             opacity: .7;
         }
@@ -227,7 +228,6 @@ app-wrapper
         display: block;
         opacity: 0;
         pointer-events: none;
-        z-index: 2;
         background: #fff;
         border: 1px solid #dedede;
         padding: 16px 0;
@@ -238,7 +238,6 @@ app-wrapper
         }
         .thumb {
             border-radius: 50%;
-            cursor: pointer;
             position: relative;
             img {
                 width: 56px;
@@ -286,6 +285,26 @@ app-wrapper
     .header__usernav__dropdown.is-active {
         opacity: 1;
         pointer-events: auto;
+        z-index: 10;
+    }
+    .header__usernav__dropdown-bg {
+        // background: transparent;
+        background: rgba(0,0,0,.2);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 8;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: .2s;
+        &.is-active {
+            opacity: 1;
+            pointer-events: all;
+            visibility: visible;
+        }
     }
 }
 /*  
@@ -329,7 +348,41 @@ app-wrapper
         line-height: 1.4;
     }
 }
-
+/*  
+フローティングボタン
+---------------------------------*/
+.float-btn {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 6px 6px rgba(0,0,0,0.16);
+    color: #313131;
+    border-radius: 50%;
+    background: #fff;
+    font-weight: bold;
+    z-index: 2;
+    font-size: 1.2rem;
+    @include hover {
+        &:hover {
+            background: #F6F9F9;
+        }
+    }
+    @include sp {
+        right: 32px;
+        bottom: 32px;
+        width: 48px;
+        height: 48px;
+    }
+    @include se {
+        right: 24px;
+        bottom: 24px;
+    }
+}
 
 /*---------------------------------
 コンテンツ部分
@@ -553,7 +606,8 @@ note-detail
         }
     }
     .note-detail__nav-bg {
-        background: transparent;
+        // background: transparent;
+        background: rgba(0,0,0,.2);
         position: fixed;
         top: 0;
         right: 0;

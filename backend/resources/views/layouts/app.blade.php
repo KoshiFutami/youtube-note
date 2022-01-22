@@ -51,7 +51,7 @@
                         <img src="{{ asset('image/user_thumbnail_default.jpg') }}">
                     @endif
                     </div>
-                    <div class="header__usernav__dropdown" id="js-user-nav-dropdown">
+                    <div class="header__usernav__dropdown" id="js-usernav-dropdown">
                         <div class="head">
                             <div class="thumb">
                             @if (Auth::user()->thumbnail)
@@ -73,6 +73,7 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="header__usernav__dropdown-bg" id="js-usernav-dropdown-bg"></div>
                 </div>
             </div>
             @endif
@@ -81,6 +82,10 @@
         <main class="main">
             @yield('content')
         </main>
+
+    @if (Auth()->check())
+        <a href="{{ route('notes.create') }}" class="float-btn"><i class="material-icons">add</i></a>
+    @endif
 
         <footer class="footer">
             <div class="footer__inner">

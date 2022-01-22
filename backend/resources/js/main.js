@@ -70,10 +70,16 @@ $(function() {
 // ドロップダウンメニューの表示
 $(function() {
     const $userThumbnail = $('#js-user-thumbnail');
-    const $userNavDropdown = $('#js-user-nav-dropdown');
+    const $userNavDropdown = $('#js-usernav-dropdown');
+    const $userNavDropdownBg = $('#js-usernav-dropdown-bg');
     const ACTIVE_CLASS = 'is-active';
 
     $userThumbnail.on('click', function() {
         $userNavDropdown.toggleClass(ACTIVE_CLASS);
+        $userNavDropdownBg.toggleClass(ACTIVE_CLASS);
+    });
+    $userNavDropdownBg.on('click', function() {
+        $userNavDropdown.removeClass(ACTIVE_CLASS);
+        $(this).removeClass(ACTIVE_CLASS);
     });
 });

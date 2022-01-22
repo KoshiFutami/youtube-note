@@ -10992,10 +10992,16 @@ $(function () {
 
 $(function () {
   var $userThumbnail = $('#js-user-thumbnail');
-  var $userNavDropdown = $('#js-user-nav-dropdown');
+  var $userNavDropdown = $('#js-usernav-dropdown');
+  var $userNavDropdownBg = $('#js-usernav-dropdown-bg');
   var ACTIVE_CLASS = 'is-active';
   $userThumbnail.on('click', function () {
     $userNavDropdown.toggleClass(ACTIVE_CLASS);
+    $userNavDropdownBg.toggleClass(ACTIVE_CLASS);
+  });
+  $userNavDropdownBg.on('click', function () {
+    $userNavDropdown.removeClass(ACTIVE_CLASS);
+    $(this).removeClass(ACTIVE_CLASS);
   });
 });
 })();
