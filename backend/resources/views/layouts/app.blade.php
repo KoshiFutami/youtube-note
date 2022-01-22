@@ -83,6 +83,10 @@
             @yield('content')
         </main>
 
+    @if (Auth()->check())
+        <a href="{{ route('notes.create') }}" class="float-btn"><i class="material-icons">add</i></a>
+    @endif
+
         <footer class="footer">
             <div class="footer__inner">
                 <nav class="footer__nav">
