@@ -12226,9 +12226,10 @@ note-form
   font-size: 16px;
   padding: 8px 12px;
   background: #F6F9F9;
-  width: 72px;
+  width: 64px;
   color: #313131;
   border-radius: 6px;
+  text-align: right;
 }
 .note-form .note-form__item input[type=number]:focus {
   border-color: #096fc8;
