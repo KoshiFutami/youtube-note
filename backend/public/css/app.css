@@ -11337,10 +11337,8 @@ body {
 
 a {
   text-decoration: none;
-  transition-duration: 0.2s;
 }
 a:hover {
-  transition-duration: 0.2s;
   text-decoration: none;
 }
 
@@ -11447,6 +11445,7 @@ app-wrapper
   color: #1a1a1a;
   font-weight: bold;
   font-size: 1.4rem;
+  transition-duration: 0.2s;
 }
 .header .header__logo:hover {
   opacity: 0.7;
@@ -11494,6 +11493,7 @@ app-wrapper
 .header .header__gnav ul a {
   color: #1a1a1a;
   font-size: 0.85rem;
+  transition-duration: 0.2s;
 }
 .header .header__gnav ul a:hover {
   opacity: 0.7;
@@ -11518,6 +11518,7 @@ app-wrapper
   align-items: center;
   height: 100%;
   z-index: 9;
+  transition-duration: 0.2s;
 }
 .header .header__usernav__thumb:hover {
   opacity: 0.7;
@@ -11585,6 +11586,7 @@ app-wrapper
   position: relative;
   padding: 12px 16px 12px 48px;
   display: block;
+  transition-duration: 0.2s;
 }
 .header .header__usernav__dropdown ul li a i {
   position: absolute;
@@ -11650,6 +11652,7 @@ app-wrapper
   display: block;
   color: #fff;
   font-size: 0.85rem;
+  transition-duration: 0.2s;
 }
 @media (min-width: 960px) {
   .footer .footer__nav .footer__nav__item:hover {
@@ -11686,6 +11689,7 @@ app-wrapper
   font-weight: bold;
   z-index: 2;
   font-size: 1.2rem;
+  transition-duration: 0.2s;
 }
 @media (min-width: 960px) {
   .float-btn:hover {
@@ -11815,6 +11819,7 @@ notes-list-button
   letter-spacing: 0.1em;
   display: flex;
   align-items: center;
+  transition-duration: 0.2s;
 }
 .notes-list-button a .material-icons {
   font-size: inherit;

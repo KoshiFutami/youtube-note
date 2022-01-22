@@ -35,9 +35,7 @@ body {
 }
 a {
     text-decoration: none;
-    transition-duration: .2s;
     &:hover {
-        transition-duration: .2s;
         text-decoration: none;
     }
 }
@@ -137,6 +135,7 @@ app-wrapper
         color: #1a1a1a;
         font-weight: bold;
         font-size: 1.4rem;
+        transition-duration: .2s;
         &:hover {
             opacity: .7;
         }
@@ -177,6 +176,7 @@ app-wrapper
             a {
                 color: #1a1a1a;
                 font-size: .85rem;
+                transition-duration: .2s;
                 @include sp {
                 }
                 &:hover {
@@ -203,6 +203,7 @@ app-wrapper
         align-items: center;
         height: 100%;
         z-index: 9;
+        transition-duration: .2s;
         &:hover {
             opacity: .7;
         }
@@ -267,6 +268,7 @@ app-wrapper
                     position: relative;
                     padding: 12px 16px 12px 48px;
                     display: block;
+                    transition-duration: .2s;
                     i {
                         position: absolute;
                         left: 16px;
@@ -330,6 +332,7 @@ app-wrapper
             display: block;
             color: #fff;
             font-size: .85rem;
+            transition-duration: .2s;
             @include hover {
                 &:hover {
                     text-decoration: underline;
@@ -367,6 +370,7 @@ app-wrapper
     font-weight: bold;
     z-index: 2;
     font-size: 1.2rem;
+    transition-duration: .2s;
     @include hover {
         &:hover {
             background: #F6F9F9;
@@ -476,6 +480,7 @@ notes-list-button
         letter-spacing: .1em;
         display: flex;
         align-items: center;
+        transition-duration: .2s;
         .material-icons {
             font-size: inherit;
         }
