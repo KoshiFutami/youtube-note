@@ -4,7 +4,7 @@ $(function() {
         var file = this.files[0];
         var reader = new FileReader();
         reader.onload = function() {
-            $('#thumbnailPreview img').attr('src', reader.result);
+            $('#thumbnailPreview > img').attr('src', reader.result);
         }
         reader.readAsDataURL(file);
     });
