@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -47,6 +48,20 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    // ゲストユーザーのID指定
+    private const GUEST_USER_ID = 24; /* 本番環境 */
+    // private const GUEST_USER_ID = 2; /* ローカル環境 */
+
+    // ゲストログイン
+    public function guestLogin()
+    {
+        if (\Auth::loginUsingID(self::GUEST_USER_ID)) {
+            return redirect('/');
+        }
+
+        return redirect('/');
     }
 
 }

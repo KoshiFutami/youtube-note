@@ -12592,6 +12592,17 @@ section.UserEdit
 /*  
 user-form
 ---------------------------------*/
+.user-form .user-form__message {
+  font-size: 0.9rem;
+  color: #e15036;
+  text-align: center;
+  text-decoration: underline;
+}
+@media (max-width: 767px) {
+  .user-form .user-form__message {
+    text-align: left;
+  }
+}
 .user-form .user-form__item {
   margin-top: 24px;
   display: block;
