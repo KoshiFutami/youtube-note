@@ -18,4 +18,8 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # wwwなしに統一
+    RewriteCond %{HTTP_HOST} ^sokomiru\.com
+    RewriteRule ^(.*) http://www.sokomiru.com/$1 [R=301,L]
 </IfModule>
