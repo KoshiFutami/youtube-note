@@ -34,7 +34,8 @@
                         <li><a href="{{ route('notes.search') }}">検索</a></li>
                         <li><a href="{{ route('notes.create') }}">新規メモ</a></li>
                     @unless (Auth()->check())
-                        <li><a href="{{ route('login') }}">ログイン</a></li>
+                    <li><a href="{{ route('login') }}">ログイン</a></li>
+                    <li><a href="{{ route('login.guest') }}">ゲストログイン</a></li>
                         <li class="cta"><a href="{{ route('register') }}">ユーザー登録</a></li>
                     @endunless
                     </ul>

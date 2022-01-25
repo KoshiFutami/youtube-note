@@ -11,6 +11,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
@@ -18,6 +19,8 @@ use App\Http\Controllers\UserController;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Auth::routes();
+
+Route::get('guest', [LoginController::class, 'guestLogin'])->name('login.guest');
 
 Route::prefix('notes')->name('notes.')->group(function() {
     Route::middleware('auth')->group(function () {
