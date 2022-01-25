@@ -31,15 +31,12 @@
                 <a class="header__logo" href="{{ url('/') }}">SOKOMIRU</a>
                 <nav class="header__gnav">
                     <ul>
-                        <li><a href="">タグ一覧</a></li>
                         <li><a href="{{ route('notes.search') }}">検索</a></li>
-                    @if (Auth()->check())
-                        <li><a href="{{ route('notes.create') }}">メモを追加</a></li>
-                        <li><a href="">登録したメモ一覧</a></li>
-                    @else
+                        <li><a href="{{ route('notes.create') }}">新規メモ</a></li>
+                    @unless (Auth()->check())
                         <li><a href="{{ route('login') }}">ログイン</a></li>
-                        <li><a href="{{ route('register') }}">ユーザー登録</a></li>
-                    @endif
+                        <li class="cta"><a href="{{ route('register') }}">ユーザー登録</a></li>
+                    @endunless
                     </ul>
                 </nav>
             @if (Auth()->check())

@@ -11458,7 +11458,7 @@ app-wrapper
 .header .header__gnav {
   grid-area: gnav;
   height: 100%;
-  width: 100%;
+  margin-left: auto;
 }
 @media (max-width: 767px) {
   .header .header__gnav {
@@ -11495,8 +11495,16 @@ app-wrapper
   font-size: 0.85rem;
   transition-duration: 0.2s;
 }
-.header .header__gnav ul a:hover {
-  opacity: 0.7;
+@media (min-width: 960px) {
+  .header .header__gnav ul a:hover {
+    opacity: 0.7;
+  }
+}
+.header .header__gnav ul li.cta a {
+  background: #096fc8;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 2px;
 }
 .header .header__usernav {
   grid-area: usernav;
