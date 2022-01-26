@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Ui\Presets\React;
 
@@ -40,7 +41,7 @@ class UserController extends Controller
      * @return view
      * @param array $request
      */
-    public function update(Request $request)
+    public function update(UserRequest $request)
     {
         $user = Auth::user();
 
