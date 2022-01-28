@@ -36,7 +36,7 @@ class UserRequest extends FormRequest
                 'name' => 'required | string | max:15',
                 'username' => 'required | string | max:15',
                 'email' => 'required | string | email | max:255',
-                'thumbnail' => 'sometimes | nullable | file | mimes:jpg,png,jpeg | max:2048',
+                'thumbnail' => 'sometimes | nullable | file | mimes:jpg,png,jpeg | max:10240',
                 'introduction' => 'string | sometimes | nullable | max:200',
             ];
         }
