@@ -49,7 +49,7 @@ class ContactController extends Controller
             // 「送信する」場合の処理を実行
             //フォーム送信者と運営者にメールを送信
             \Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
-            \Mail::to(env('MAIL_ADMIN'))->send(new ContactSendmail($inputs));
+            \Mail::to(env('MAIL_ADMIN'))->send(new ContactAdminSendmail($inputs));
     
             //再送信を防ぐためにトークンを再発行
             $request->session()->regenerateToken();

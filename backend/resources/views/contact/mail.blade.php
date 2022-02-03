@@ -6,5 +6,5 @@
 【SOKOMIRU（そこみる）】<br>
 URL：https://www.sokomiru.com<br>
 運営者：二見 耕史<br>
-メールアドレス：{{ env('ADMIN_MAIL') }}<br>
+メールアドレス：{{ env('MAIL_ADMIN') }}<br>
 -----------------------------------------------------<br>
