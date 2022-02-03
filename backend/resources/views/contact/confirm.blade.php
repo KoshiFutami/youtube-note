@@ -7,6 +7,7 @@
 
 <div class="section ContactForm">
     <div class="section__inner">
+        <h2 class="section-title">お問い合わせフォーム</h2>
         <div class="contact-form">
             <form action="{{ route('contact.send') }}" method="POST" class="form">
                 @csrf
@@ -32,9 +33,9 @@
                     <input name="body" value="{{ $inputs['body'] }}" type="hidden">
                 </div>
 
-                <button type="submit" class="form__button">送信</button>
+                <button type="submit" name="action" value="submit" class="form__button">送信する</button>
 
-                <button type="button" onClick="history.back()">入力内容を修正する</button>
+                <button type="submit" name="action" value="back" class="form__cancel" onClick="history.back()">修正する</button>
             </form>
         </div>
 

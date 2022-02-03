@@ -1475,6 +1475,12 @@ form
     .form__item:first-of-type {
         margin-top: 0;
     }
+    .form__item__input {
+        margin-top: 12px;
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #313131;
+    }
     .form__error {
         color: #e15036;
         font-size: .8rem;
@@ -1513,6 +1519,7 @@ section.ContactForm
         max-width: 640px;
         margin: auto;
     }
+    .section-title + p,
     .section-title + .contact-form {
         margin-top: 32px;
     }

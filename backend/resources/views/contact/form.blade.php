@@ -33,7 +33,7 @@
                     <div class="form__error">{{ $errors->first('body') }}</div>
                     @endif
                 </div>
-                <button type="submit" class="form__button">入力内容を確認</button>
+                <button type="submit" class="form__button">入力内容を確認する</button>
             </form>
         </div>
 
