@@ -25,12 +25,6 @@ class ContactController extends Controller
      */
     public function confirm(ContactRequest $request)
     {
-        // $request->validate([
-        //     'username' => 'required',
-        //     'email' => 'required|email',
-        //     'body'  => 'required',
-        // ]);
-
         $inputs = $request->all();
         return view('contact.confirm', [
             'inputs' => $inputs,
@@ -43,21 +37,25 @@ class ContactController extends Controller
      */
     public function send(ContactRequest $request)
     {
-        // $request->validate([
-        //     'username' => 'required',
-        //     'email' => 'required|email',
-        //     'body'  => 'required',
-        // ]);
+        // 「送信する」 or 「修正する」を確認
+        $action = $request->input('action');
+         
+        $inputs = $request->except('action');
 
-        $inputs = $request->all();
-
-        //入力されたメールアドレスにメールを送信
-        \Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
-
-        //再送信を防ぐためにトークンを再発行
-        $request->session()->regenerateToken();
-
-        return view('contact.thanks');
+        if ($action !== 'submit') {
+            // 「修正する」場合はフォーム入力ページに飛ばす
+            return redirect()->route('contact.form')->withInput($inputs);
+        } else {
+            // 「送信する」場合の処理を実行
+            //フォーム送信者と運営者にメールを送信
+            \Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
+            \Mail::to(env('MAIL_ADMIN'))->send(new ContactSendmail($inputs));
+    
+            //再送信を防ぐためにトークンを再発行
+            $request->session()->regenerateToken();
+    
+            return view('contact.thanks');
+        }
 
     }
 

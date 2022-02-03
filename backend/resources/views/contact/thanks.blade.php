@@ -7,6 +7,7 @@
 
 <div class="section ContactForm">
     <div class="section__inner">
+        <h2 class="section-title">お問い合わせフォーム</h2>
         <p>お問い合わせいただき、誠にありがとうございます。<br>数日中にご返信いたしますので、今しばらくお待ちくださいませ。</p>
     </div>
 </div>
