@@ -61,12 +61,4 @@ class ContactController extends Controller
 
     }
 
-    /**
-     * 送信完了ページを表示
-     * @return view
-     */
-    public function showThanks()
-    {
-        return view('contact.confirm');
-    }
 }
