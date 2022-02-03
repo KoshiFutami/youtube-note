@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
+Route::prefix('contact')->name('contact.')->group(function() {
+    Route::get('/', [ContactController::class, 'contact'])->name('form');
+    Route::post('/confirm', [ContactController::class, 'confirm'])->name('confirm');
+    Route::post('/thanks', [ContactController::class, 'send'])->name('send');
+});
 
 Auth::routes();
 
