@@ -6,7 +6,7 @@
 @section('content')
 <div class="section Login">
     <div class="section__inner">
-        <div class="login-form">
+        <div class="auth-form">
             <form class="form" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form__head">SOKOMIRUにログイン</div>
