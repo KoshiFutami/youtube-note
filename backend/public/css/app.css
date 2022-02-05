@@ -11743,12 +11743,16 @@ section
 .section .section__inner {
   margin: auto;
   max-width: 880px;
-  padding: 56px 40px;
+  padding: 40px 40px;
 }
-@media (max-width: 959px) {
+@media (max-width: 767px) {
   .section .section__inner {
-    padding-right: 24px;
-    padding-left: 24px;
+    padding: 32px 32px;
+  }
+}
+@media (max-width: 499px) {
+  .section .section__inner {
+    padding: 24px 24px;
   }
 }
 
@@ -11774,6 +11778,7 @@ notes-list
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: relative;
 }
 .notes-list::after {
   content: "";
@@ -11806,33 +11811,38 @@ notes-list
 }
 
 /*  
-notes-list-button
+notes-list__head
 ---------------------------------*/
-.notes-list-button {
-  display: inline-block;
-  margin-left: 16px;
+.notes-list__head {
+  width: 100%;
+  font-size: 1.4rem;
+  color: #212121;
+  margin-bottom: 24px;
 }
-@media (max-width: 767px) {
-  .notes-list-button {
-    display: table;
-    margin-left: 0;
-  }
+
+/*  
+notes-list__button
+---------------------------------*/
+.notes-list__button {
+  position: absolute;
+  right: 16px;
+  top: 8px;
 }
-.notes-list-button a {
-  color: #9e9e9e;
+.notes-list__button a {
+  color: #919191;
   font-size: 0.8rem;
   font-weight: normal;
   line-height: 1.2;
   font-feature-settings: "palt";
   letter-spacing: 0.1em;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   transition-duration: 0.2s;
 }
-.notes-list-button a .material-icons {
-  font-size: inherit;
+.notes-list__button a .material-icons {
+  font-size: 1.2em;
 }
-.notes-list-button a:hover {
+.notes-list__button a:hover {
   color: #313131;
 }
 
