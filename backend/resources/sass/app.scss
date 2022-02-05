@@ -486,6 +486,9 @@ notes-list__head
     font-size: 1.4rem;
     color: #212121;
     line-height: 1.6;
+    .UsersNotes & {
+        margin-bottom: 24px;
+    }
 }
 /*  
 notes-list__button
@@ -494,6 +497,10 @@ notes-list__button
     text-align: right;
     margin-bottom: 24px;
     width: 100%;
+    .UsersNotes & {
+        margin-bottom: 0;
+    }
+
     @include sp {
         text-align: left;
     }
@@ -1498,5 +1505,47 @@ section.Login
     }
     @include se {
         padding: 24px 24px;
+    }
+}
+
+/*  
+interests
+---------------------------------*/
+.interests {
+    .interests__head {
+        width: 100%;
+        font-size: 1.4rem;
+        color: #212121;
+        line-height: 1.6;
+    }
+    .interests-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 12px;
+    }
+    .interests-list__message {
+        color: #616161;
+        font-size: .9rem;
+    }
+    .interest {
+        display: inline-block;
+        margin-right: 16px;
+        font-size: .9rem;
+        color: #fff;
+        background-color: #096fc8;
+        padding: 4px 16px;
+        border-radius: 4px;
+        @include hover {
+            transition-duration: .2s;
+            &:hover {
+                opacity: .75;
+            }
+        }
+    }
+}
+.interests + .notes-list {
+    margin-top: 48px;
+    @include sp {
+        margin-top: 32px;
     }
 }

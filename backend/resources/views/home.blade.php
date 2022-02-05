@@ -9,7 +9,7 @@
     <div class="section__inner">
         <div class="notes-list">
             <div class="notes-list__head">{{ auth()->user()->name }}さんが最近投稿したメモ</div>
-            <div class="notes-list__button"><a href="">自分のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
+            <div class="notes-list__button"><a href="{{ route('users.notes', auth()->user()->username) }}">自分のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
         @if (!$my_notes->isEmpty())
             @foreach ($my_notes as $note)
             <a href="/notes/{{ $note->id }}" class="note">
