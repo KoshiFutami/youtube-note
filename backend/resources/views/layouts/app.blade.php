@@ -23,25 +23,21 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body @if(Auth()->check()) {{ 'class="user-logged-in"' }} @endif>
     <div id="app" class="app-wrapper">
         <header class="header">
             <div class="header__inner">
                 
                 <a class="header__logo" href="{{ url('/') }}">SOKOMIRU</a>
+            @if (Auth()->check())
                 <nav class="header__gnav">
                     <ul>
-                        <li><a href="{{ route('notes.search') }}">キーワード検索</a></li>
+                        <li><a href="{{ route('notes.search') }}"><i class="material-icons">search</i></a></li>
                         <li><a href="{{ route('notes.create') }}">新規追加</a></li>
-                    @if (Auth()->check())
                         <li><a href="{{ route('users.notes', auth()->user()->username) }}">自分のメモ</a></li>
-                    @else
-                        <li><a href="{{ route('login') }}">ログイン</a></li>
-                        <li><a href="{{ route('login.guest') }}">ゲストログイン</a></li>
-                        <li class="cta"><a href="{{ route('register') }}">ユーザー登録</a></li>
-                    @endif
                     </ul>
                 </nav>
+            @endif
             @if (Auth()->check())
                 <div class="header__usernav">
                     <div class="header__usernav__thumb" id="js-user-thumbnail">
@@ -78,8 +74,16 @@
                     </div>
                     <div class="header__usernav__dropdown-bg" id="js-usernav-dropdown-bg"></div>
                 </div>
-            </div>
+            @else
+                <nav class="header__authnav">
+                    <ul>
+                        <li><a href="{{ route('notes.search') }}"><i class="material-icons">search</i></a></li>
+                        <li><a href="{{ route('login') }}">ログイン</a></li>
+                        <li class="cta"><a href="{{ route('register') }}">ユーザー登録</a></li>
+                    </ul>
+                </nav>
             @endif
+            </div>
         </header>
 
         <main class="main">
