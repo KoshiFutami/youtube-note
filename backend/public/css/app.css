@@ -11910,17 +11910,11 @@ notes-list__head
 notes-list__button
 ---------------------------------*/
 .notes-list__button {
-  text-align: right;
   margin-bottom: 24px;
   width: 100%;
 }
 .UsersNotes .notes-list__button {
   margin-bottom: 0;
-}
-@media (max-width: 767px) {
-  .notes-list__button {
-    text-align: left;
-  }
 }
 .notes-list__button a {
   color: #919191;

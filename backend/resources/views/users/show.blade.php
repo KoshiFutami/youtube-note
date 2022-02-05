@@ -37,10 +37,11 @@
         </div>
 
         <div class="user-notes">
-            <div class="user-notes__head"></div>
             <div class="notes-list">
-                @if (!$user->notes->isEmpty())
-                    @foreach ($user->notes as $note)
+                <div class="notes-list__head">最新投稿されたメモ</div>
+                <div class="notes-list__button"><a href="{{ route('users.notes', $user->username) }}">メモをすべて見る<span class="material-icons">chevron_right</span></a></div>
+                @if (!$notes->isEmpty())
+                    @foreach ($notes as $note)
                     <a href="/notes/{{ $note->id }}" class="note">
                         <div class="note__figure">
                             <img src="https://img.youtube.com/vi/{{ $note->yt_video_id }}/mqdefault.jpg">

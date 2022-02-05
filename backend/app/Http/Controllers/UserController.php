@@ -18,8 +18,11 @@ class UserController extends Controller
     public function show($username)
     {
         $user = User::where('username', $username)->first();
+        $notes = $user->notes;
+        
         return view('users.show',[
             'user' => $user,
+            'notes' => $notes,
         ]);
     }
 

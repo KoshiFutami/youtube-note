@@ -568,7 +568,7 @@ notes-list__head
 notes-list__button
 ---------------------------------*/
 .notes-list__button {
-    text-align: right;
+    // text-align: right;
     margin-bottom: 24px;
     width: 100%;
     .UsersNotes & {
@@ -576,7 +576,7 @@ notes-list__button
     }
 
     @include sp {
-        text-align: left;
+        // text-align: left;
     }
     a {
         color: #919191;
