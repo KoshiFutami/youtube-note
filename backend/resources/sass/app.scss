@@ -469,12 +469,6 @@ notes-list
         }
     }
 }
-.section-title + .notes-list {
-    margin-top: 24px;
-}
-.notes-list + .section-title {
-    margin-top: 32px;
-}
 .notes-list + .notes-list {
     margin-top: 64px;
     @include sp {
@@ -491,15 +485,17 @@ notes-list__head
     width: 100%;
     font-size: 1.4rem;
     color: #212121;
-    margin-bottom: 24px;
 }
 /*  
 notes-list__button
 ---------------------------------*/
 .notes-list__button {
-    position: absolute;
-    right: 16px;
-    top: 8px;
+    text-align: right;
+    margin-top: 8px;
+    width: 100%;
+    @include sp {
+        text-align: left;
+    }
     a {
         color: #919191;
         font-size: .8rem;
