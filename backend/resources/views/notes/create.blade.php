@@ -7,7 +7,7 @@
 
 <div class="section NoteCreate">
     <div class="section__inner">
-        <div class="note-create">
+        <div class="note-form">
             <form class="form" action="{{ route('notes.store') }}" method="post">
                 @csrf
                 <div class="form__head">新しいメモを作成</div>

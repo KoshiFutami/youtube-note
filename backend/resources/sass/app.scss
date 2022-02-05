@@ -191,7 +191,7 @@ app-wrapper
                     background: #096fc8;
                     color: #fff;
                     padding: 4px 12px;
-                    border-radius: 2px;
+                    border-radius: 4px;
                 }
             }
         }
@@ -755,18 +755,20 @@ note-detail
     }
 }
 /*  
-note-create
+note-form
 ---------------------------------*/
-.note-create {
-    width: 90%;
-    max-width: 640px;
+.note-form {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
     background: #fff;
     padding: 40px 40px;
-    margin: 32px auto 0;
-    border-radius: 12px;
-    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.12);
     @include sp {
-        width: 100%;
+        padding: 32px 32px;
+    }
+    @include se {
+        padding: 24px 24px;
     }
 }
 /*  
@@ -871,7 +873,7 @@ search-form
         padding: 8px 12px;
         background: #F6F9F9;
         color: #313131;
-        border-radius: 6px;
+        border-radius: 4px;
         &:focus {
             border-color: #096fc8;
         }
@@ -1042,7 +1044,7 @@ user-notes
     }
     .note {
         width: calc((100% - 24px) / 2);
-        border-radius: 5px;
+        border-radius: 4px;
         position: relative;
         padding-bottom: 12px;
         border: 1px solid #e6e6e6;
@@ -1075,7 +1077,7 @@ user-notes
         color: #212121;
         background: #eaeaea;
         margin-right: 8px;
-        border-radius: 6px;
+        border-radius: 4px;
         line-height: 1.2;
         font-size: .6rem;
         &::before {
@@ -1140,7 +1142,7 @@ form
             padding: 8px 12px;
             background: #F6F9F9;
             color: #313131;
-            border-radius: 6px;
+            border-radius: 4px;
             &:focus {
                 border-color: #096fc8;
             }
@@ -1157,7 +1159,7 @@ form
             background: #F6F9F9;
             width: 64px;
             color: #313131;
-            border-radius: 6px;
+            border-radius: 4px;
             text-align: center;
             &:focus {
                 border-color: #096fc8;
@@ -1169,19 +1171,22 @@ form
         textarea {
             display: block;
             width: 100%;
-            height: 120px;
+            height: 180px;
             margin-top: 12px;
             border: 2px solid transparent;
             font-size: 16px;
             padding: 8px 12px;
             background: #F6F9F9;
             color: #313131;
-            border-radius: 6px;
+            border-radius: 4px;
             &:focus {
                 border-color: #096fc8;
             }
             &.is-invalid {
                 border-color: #e15036;
+            }
+            @include sp {
+                height: 240px;
             }
         }
         .checkbox-group {
@@ -1241,7 +1246,7 @@ form
             padding: 8px 12px;
             background: #F6F9F9;
             color: #313131;
-            border-radius: 6px;
+            border-radius: 4px;
             &:focus {
                 border-color: #096fc8;
             }
@@ -1264,9 +1269,6 @@ form
         color: #e15036;
         font-size: .8rem;
         margin-top: 4px;
-        &::before {
-            content: "※";
-        }
     }
     .form__button {
         border-radius: 99rem;
@@ -1474,6 +1476,12 @@ section.Login
     width: 100%;
     max-width: 480px;
     background: #fff;
-    padding: 32px 32px;
+    padding: 40px 40px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+    @include sp {
+        padding: 32px 32px;
+    }
+    @include se {
+        padding: 24px 24px;
+    }
 }
