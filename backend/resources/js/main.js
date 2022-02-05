@@ -83,3 +83,19 @@ $(function() {
         $(this).removeClass(ACTIVE_CLASS);
     });
 });
+
+// フォームのパスワード表示・非表示を切り替え
+$(function() {
+    const $passwordToggle = $('.js-password-toggle');
+    $passwordToggle.on('click', function(e) {
+        e.preventDefault();
+        
+        if ($(this).prev('input').get(0).type === 'password') {
+            $(this).prev('input').get(0).type = 'text';
+            $(this).text('visibility_off');
+        } else {
+            $(this).prev('input').get(0).type = 'password';
+            $(this).text('visibility');
+        }
+    });
+});
