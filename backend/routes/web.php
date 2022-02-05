@@ -31,6 +31,7 @@ Route::get('guest', [LoginController::class, 'guestLogin'])->name('login.guest')
 
 Route::prefix('notes')->name('notes.')->group(function() {
     Route::middleware('auth')->group(function () {
+        Route::get('/', [NoteController::class, 'showAll'])->name('index');
         Route::get('/create', [NoteController::class, 'create'])->name('create');
         Route::post('/store', [NoteController::class, 'store'])->name('store');
         Route::delete('/{id}/destroy', [NoteController::class, 'destroy'])->name('destroy');

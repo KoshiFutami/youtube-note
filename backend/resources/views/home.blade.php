@@ -40,7 +40,7 @@
     <div class="section__inner">
         <div class="notes-list">
             <div class="notes-list__head">SOKOMIRUユーザーのメモ</div>
-            <div class="notes-list__button"><a href="">SOKOMIRUユーザーのメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
+            <div class="notes-list__button"><a href="{{ route('notes.index') }}">SOKOMIRUユーザーのメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
         @if (!$users_notes->isEmpty())
             @foreach ($users_notes as $note)
             <a href="/notes/{{ $note->id }}" class="note">

@@ -555,8 +555,12 @@ notes-list__head
     font-size: 1.4rem;
     color: #212121;
     line-height: 1.6;
+    .AllNotes &,
     .UsersNotes & {
         margin-bottom: 24px;
+        @include sp {
+            margin-bottom: 16px;
+        }
     }
 }
 /*  
