@@ -23,7 +23,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body @if(Auth()->check()) {{ 'class="user-logged-in"' }} @endif>
+<body class="@if(Auth()->check()) {{ "user-logged-in" }} @endif">
     <div id="app" class="app-wrapper">
         <header class="header">
             <div class="header__inner">

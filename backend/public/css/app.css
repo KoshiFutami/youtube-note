@@ -11443,10 +11443,11 @@ app-wrapper
 body:not(.user-logged-in) .header .header__inner {
   grid-template-areas: "logo usernav";
   grid-template-columns: auto auto;
+  display: flex;
+  justify-content: space-between;
 }
 @media (max-width: 767px) {
   body:not(.user-logged-in) .header .header__inner {
-    grid-template-areas: "logo usernav";
     height: 56px;
   }
 }
@@ -11534,6 +11535,7 @@ body:not(.user-logged-in) .header .header__inner {
   grid-area: usernav;
   position: relative;
   height: 100%;
+  margin-left: auto;
 }
 @media (max-width: 767px) {
   .header .header__authnav {
@@ -11551,7 +11553,6 @@ body:not(.user-logged-in) .header .header__inner {
 @media (max-width: 767px) {
   .header .header__authnav ul {
     white-space: nowrap;
-    padding: 0 16px;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
