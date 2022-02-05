@@ -12402,10 +12402,22 @@ user-profile
     padding: 24px 24px;
   }
   .user-profile .user-profile__main {
-    width: 35%;
+    width: 40%;
   }
   .user-profile .user-profile__sub {
-    width: 65%;
+    width: 60%;
+  }
+}
+@media (max-width: 499px) {
+  .user-profile {
+    flex-wrap: wrap;
+  }
+  .user-profile .user-profile__main {
+    width: 100%;
+  }
+  .user-profile .user-profile__sub {
+    width: 100%;
+    margin-top: 32px;
   }
 }
 .user-profile .thumbnail {
@@ -12423,9 +12435,16 @@ user-profile
 }
 @media (max-width: 767px) {
   .user-profile .thumbnail {
-    width: 25vw;
-    height: 25vw;
-    margin: auto;
+    width: 20vw;
+    height: 20vw;
+    margin: 16px auto 0;
+  }
+}
+@media (max-width: 499px) {
+  .user-profile .thumbnail {
+    width: 40vw;
+    height: 40vw;
+    margin: 0 auto 0 0;
   }
 }
 .user-profile .thumbnail img {
