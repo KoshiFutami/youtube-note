@@ -10,6 +10,7 @@
         <div class="">
             <form class="form" action="{{ route('users.update', $user->username) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                <div class="form__head">プロフィールを編集</div>
             @if (Auth::user()->username === 'guestuser')
                  <p class="form__message">※ゲストユーザーは、自己紹介文のみ自由に編集できます。</p>
             @endif
