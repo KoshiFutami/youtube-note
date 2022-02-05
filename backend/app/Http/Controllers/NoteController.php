@@ -19,6 +19,18 @@ class NoteController extends Controller
     {
         return view('notes.create');
     }
+    /**
+     * 全ユーザーのメモ一覧を表示
+     * @return view
+     *　 
+     */
+    public function showAll()
+    {
+        $notes = Note::all();
+        return view('notes.index', [
+            'notes' => $notes,
+        ]);
+    }
 
     /**
      * 作成したメモを登録

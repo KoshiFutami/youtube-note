@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -31,6 +32,7 @@ Route::get('guest', [LoginController::class, 'guestLogin'])->name('login.guest')
 
 Route::prefix('notes')->name('notes.')->group(function() {
     Route::middleware('auth')->group(function () {
+        Route::get('/', [NoteController::class, 'showAll'])->name('index');
         Route::get('/create', [NoteController::class, 'create'])->name('create');
         Route::post('/store', [NoteController::class, 'store'])->name('store');
         Route::delete('/{id}/destroy', [NoteController::class, 'destroy'])->name('destroy');
@@ -39,6 +41,10 @@ Route::prefix('notes')->name('notes.')->group(function() {
     });
     Route::get('/search', [NoteController::class, 'search'])->name('search');
     Route::get('/{id}', [NoteController::class, 'show'])->name('show');
+});
+
+Route::prefix('tags')->name('tags.')->group(function() {
+    Route::get('/{id}', [TagController::class, 'showNotes'])->name('notes');
 });
 
 // Todo：認証済ユーザーが自分のページだけ編集などできるようにルーティングを設定
