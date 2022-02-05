@@ -7,10 +7,10 @@
 
 <div class="section NoteCreate">
     <div class="section__inner">
-        <h2 class="section-title">メモを追加</h2>
         <div class="note-create">
             <form class="form" action="{{ route('notes.store') }}" method="post">
                 @csrf
+                <div class="form__head">新しいメモを作成</div>
                 <div class="form__item">
                     <label for="title">タイトル<span　class="is-required">※必須</span></label>
                     <input type="text" name="title" id="title" class="{{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') }}">

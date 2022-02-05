@@ -55,6 +55,7 @@
             <div class="note-edit__inner">
                 <div class="note-edit__close" id="js-note-edit-close"><span class="material-icons">close</span></div>
                 <form class="form" action="{{ route('notes.update', $note) }}" method="post">
+                    <div class="form__head">メモを編集する</div>
                     @csrf
                     <input type="hidden" name="id" value="{{ $note->id }}">
                     <div class="form__item">
