@@ -56,7 +56,7 @@
                                 <img src="{{ asset('image/user_thumbnail_default.jpg') }}">
                             @endif
                             </div>
-                            <div class="username"><span>{{ Auth::user()->name }}</span></div>
+                            <div class="username"><span>{{ Auth::user()->name }}</span>さん</div>
                         </div>
                         <ul>
                             <li>

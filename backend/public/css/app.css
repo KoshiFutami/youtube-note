@@ -11644,13 +11644,12 @@ body:not(.user-logged-in) .header .header__inner {
   border: 1px solid #dedede;
 }
 .header .header__usernav__dropdown .username {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: #313131;
   margin-left: 12px;
 }
 .header .header__usernav__dropdown .username span {
-  font-weight: bold;
-  font-size: 1.4em;
+  font-size: 1.2em;
   margin-right: 2px;
 }
 .header .header__usernav__dropdown ul {
