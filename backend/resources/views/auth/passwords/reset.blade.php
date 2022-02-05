@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'パスワード再設定｜SOKOMIRU')
+@section('description', 'こちらはSOKOMIRUのパスワード再設定ページです。パスワードを忘れてしまった方や新しく設定したい方は、フォームにメールアドレスと新しいパスワードを入力して送信してください。')
+
 @section('content')
 <div class="section PasswordReset">
     <div class="section__inner">
