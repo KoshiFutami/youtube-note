@@ -11440,6 +11440,17 @@ app-wrapper
     height: 88px;
   }
 }
+body:not(.user-logged-in) .header .header__inner {
+  grid-template-areas: "logo usernav";
+  grid-template-columns: auto auto;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 767px) {
+  body:not(.user-logged-in) .header .header__inner {
+    height: 56px;
+  }
+}
 .header .header__logo {
   grid-area: logo;
   color: #1a1a1a;
@@ -11488,7 +11499,7 @@ app-wrapper
   }
 }
 .header .header__gnav ul li + li {
-  margin-left: 32px;
+  margin-left: 24px;
 }
 .header .header__gnav ul a {
   color: #1a1a1a;
@@ -11499,6 +11510,9 @@ app-wrapper
   .header .header__gnav ul a:hover {
     opacity: 0.7;
   }
+}
+.header .header__gnav ul a .material-icons {
+  vertical-align: middle;
 }
 .header .header__gnav ul li.cta a {
   background: #096fc8;
@@ -11516,6 +11530,60 @@ app-wrapper
     margin-left: auto;
     margin-right: 16px;
   }
+}
+.header .header__authnav {
+  grid-area: usernav;
+  position: relative;
+  height: 100%;
+  margin-left: auto;
+}
+@media (max-width: 767px) {
+  .header .header__authnav {
+    margin-left: auto;
+    margin-right: 16px;
+  }
+}
+.header .header__authnav ul {
+  display: flex;
+  list-style: none;
+  height: 100%;
+  align-items: center;
+  margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  .header .header__authnav ul {
+    white-space: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .header .header__authnav ul::-webkit-scrollbar {
+    display: none;
+  }
+}
+.header .header__authnav ul li + li {
+  margin-left: 24px;
+}
+.header .header__authnav ul a {
+  color: #1a1a1a;
+  font-size: 0.85rem;
+  transition-duration: 0.2s;
+}
+@media (min-width: 768px) {
+  .header .header__authnav ul a:hover {
+    opacity: 0.7;
+  }
+}
+.header .header__authnav ul a .material-icons {
+  vertical-align: middle;
+}
+.header .header__authnav ul li.cta a {
+  background: #096fc8;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 4px;
 }
 .header .header__usernav__thumb {
   border-radius: 50%;
@@ -11734,6 +11802,11 @@ main
 @media (max-width: 767px) {
   .main {
     margin-top: 88px;
+  }
+}
+@media (max-width: 767px) {
+  body:not(.user-logged-in) .main {
+    margin-top: 56px;
   }
 }
 
