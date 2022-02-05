@@ -11825,6 +11825,9 @@ notes-list__head
   color: #212121;
   line-height: 1.6;
 }
+.UsersNotes .notes-list__head {
+  margin-bottom: 24px;
+}
 
 /*  
 notes-list__button
@@ -11833,6 +11836,9 @@ notes-list__button
   text-align: right;
   margin-bottom: 24px;
   width: 100%;
+}
+.UsersNotes .notes-list__button {
+  margin-bottom: 0;
 }
 @media (max-width: 767px) {
   .notes-list__button {
@@ -12891,5 +12897,50 @@ section.Login
 @media (max-width: 499px) {
   .auth-form {
     padding: 24px 24px;
+  }
+}
+
+/*  
+interests
+---------------------------------*/
+.interests .interests__head {
+  width: 100%;
+  font-size: 1.4rem;
+  color: #212121;
+  line-height: 1.6;
+}
+.interests .interests-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.interests .interests-list__message {
+  color: #616161;
+  font-size: 0.9rem;
+}
+.interests .interest {
+  display: inline-block;
+  margin-right: 16px;
+  font-size: 0.9rem;
+  color: #fff;
+  background-color: #096fc8;
+  padding: 4px 16px;
+  border-radius: 4px;
+}
+@media (min-width: 768px) {
+  .interests .interest {
+    transition-duration: 0.2s;
+  }
+  .interests .interest:hover {
+    opacity: 0.75;
+  }
+}
+
+.interests + .notes-list {
+  margin-top: 48px;
+}
+@media (max-width: 767px) {
+  .interests + .notes-list {
+    margin-top: 32px;
   }
 }

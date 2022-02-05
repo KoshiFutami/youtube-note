@@ -65,4 +65,31 @@ class UserController extends Controller
 
         return redirect(route('users.show', $user->username));
     }
+
+    /**
+     * ユーザーが投稿したメモの一覧を表示
+     * @return view
+     * @param string $username
+     */
+    public function showNotes($username)
+    {
+        $user = User::where('username', $username)->first();
+        $notes = $user->notes()->orderBy('created_at', 'DESC')->get();
+
+        $tags = [];
+        // foreach ($notes as $note) {
+        //     $note_tags = $note->tags()->pluck('name')->toArray();
+        //     $tags = array_merge($tags, $note_tags);
+        // }
+        foreach ($notes as $note) {
+            $note_tags = $note->tags->toArray();
+            $tags = array_merge($tags, $note_tags);
+        }
+
+        return view('users.notes', [
+            'user' => $user,
+            'notes' => $notes,
+            'tags' => $tags,
+        ]);
+    }
 }

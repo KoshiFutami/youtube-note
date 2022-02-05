@@ -45,6 +45,7 @@ Route::prefix('notes')->name('notes.')->group(function() {
 Route::name('users.')->group(function() {
     Route::get('/{username}/edit', [UserController::class, 'edit'])->name('edit');
     Route::post('/{username}/update', [UserController::class, 'update'])->name('update');
+    Route::get('/{username}/notes', [UserController::class, 'showNotes'])->name('notes');
     Route::get('/{username}', [UserController::class, 'show'])->name('show');
 });
 
