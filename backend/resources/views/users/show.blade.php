@@ -38,7 +38,7 @@
 
         <div class="user-notes">
             <div class="notes-list">
-                <div class="notes-list__head">最新投稿されたメモ</div>
+                <div class="notes-list__head">最近投稿されたメモ</div>
                 <div class="notes-list__button"><a href="{{ route('users.notes', $user->username) }}">メモをすべて見る<span class="material-icons">chevron_right</span></a></div>
                 @if (!$notes->isEmpty())
                     @foreach ($notes as $note)
