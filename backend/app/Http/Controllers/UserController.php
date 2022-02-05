@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Note;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
@@ -18,8 +19,8 @@ class UserController extends Controller
     public function show($username)
     {
         $user = User::where('username', $username)->first();
-        $notes = $user->notes;
-        
+        $notes = Note::where('user_id', $user->id)->orderBy('created_at', 'desc')->limit(4)->get();
+
         return view('users.show',[
             'user' => $user,
             'notes' => $notes,
