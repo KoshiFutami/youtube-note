@@ -36,7 +36,7 @@
     </div>
 </div>
 @endif
-<div class="section UsersNotes">
+<div class="section AllUsersNotes">
     <div class="section__inner">
         <div class="notes-list">
             <div class="notes-list__head">SOKOMIRUユーザーのメモ</div>
