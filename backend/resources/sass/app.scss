@@ -475,6 +475,15 @@ notes-list
 .notes-list + .section-title {
     margin-top: 32px;
 }
+.notes-list + .notes-list {
+    margin-top: 64px;
+    @include sp {
+        margin-top: 48px;
+    }
+    @include se {
+        margin-top: 32px;
+    }
+}
 /*  
 notes-list__head
 ---------------------------------*/

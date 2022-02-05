@@ -11810,6 +11810,20 @@ notes-list
   margin-top: 32px;
 }
 
+.notes-list + .notes-list {
+  margin-top: 64px;
+}
+@media (max-width: 767px) {
+  .notes-list + .notes-list {
+    margin-top: 48px;
+  }
+}
+@media (max-width: 499px) {
+  .notes-list + .notes-list {
+    margin-top: 32px;
+  }
+}
+
 /*  
 notes-list__head
 ---------------------------------*/
