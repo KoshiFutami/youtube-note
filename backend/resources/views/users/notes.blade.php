@@ -11,7 +11,7 @@
             <div class="interests-list">
             @if (count($tags) > 0)
                 @foreach ($tags as $tag)
-                <a href="tags/{{ $tag['id'] }}" class="interest">{{ $tag['name'] }}</a>
+                <a href="{{ route('tags.notes', $tag['id']) }}" class="interest">{{ $tag['name'] }}</a>
                 @endforeach
             @else
                 <p class="interests-list__message">{{ $user->name }}さんの興味・関心はまだ不明です･･･</p>

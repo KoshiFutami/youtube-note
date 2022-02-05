@@ -71,7 +71,7 @@
     <div class="section__inner">
         <div class="notes-list">
             <div class="notes-list__head">タグ別投稿数1位「#{{ $popular_tags[0]->name }}」</div>
-            <div class="notes-list__button"><a href="">「#{{ $popular_tags[0]->name }}」のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
+            <div class="notes-list__button"><a href="{{ route('tags.notes', $popular_tags[0]->id) }}">「#{{ $popular_tags[0]->name }}」のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
         @foreach ($popular_tags_notes[0] as $note)
             <a href="/notes/{{ $note->id }}" class="note">
                 <div class="note__figure">
@@ -95,7 +95,7 @@
         @if (isset($popular_tags[1]))
         <div class="notes-list">
             <div class="notes-list__head">タグ別投稿数2位「#{{ $popular_tags[1]->name }}」</div>
-            <div class="notes-list__button"><a href="">「#{{ $popular_tags[1]->name }}」のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
+            <div class="notes-list__button"><a href="{{ route('tags.notes', $popular_tags[1]->id) }}">「#{{ $popular_tags[1]->name }}」のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
         @foreach ($popular_tags_notes[1] as $note)
             <a href="/notes/{{ $note->id }}" class="note">
                 <div class="note__figure">
@@ -120,7 +120,7 @@
         @if (isset($popular_tags[2]))
         <div class="notes-list">
             <div class="notes-list__head">タグ別投稿数3位「#{{ $popular_tags[2]->name }}」</div>
-            <div class="notes-list__button"><a href="">「#{{ $popular_tags[2]->name }}」のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
+            <div class="notes-list__button"><a href="{{ route('tags.notes', $popular_tags[2]->id) }}">「#{{ $popular_tags[2]->name }}」のメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
             
         @foreach ($popular_tags_notes[2] as $note)
             <a href="/notes/{{ $note->id }}" class="note">

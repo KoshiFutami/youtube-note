@@ -11897,11 +11897,11 @@ notes-list__head
   color: #212121;
   line-height: 1.6;
 }
-.AllNotes .notes-list__head, .UsersNotes .notes-list__head {
+.TagNotes .notes-list__head, .AllNotes .notes-list__head, .UsersNotes .notes-list__head {
   margin-bottom: 24px;
 }
 @media (max-width: 767px) {
-  .AllNotes .notes-list__head, .UsersNotes .notes-list__head {
+  .TagNotes .notes-list__head, .AllNotes .notes-list__head, .UsersNotes .notes-list__head {
     margin-bottom: 16px;
   }
 }
