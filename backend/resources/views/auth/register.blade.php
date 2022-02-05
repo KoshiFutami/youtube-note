@@ -4,89 +4,65 @@
 @section('description', 'こちらはSOKOMIRUの会員登録ページです。SOKOMIRUは、YouTube動画の場面をちょっとしたメモと一緒にアプリに残すことができるアプリです。')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="off" autofocus>
-
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+<div class="section Signup">
+    <div class="section__inner">
+        <div class="signup">
+            <div class="signup__introduction">
+                <h1 class="title">Welcome to SOKOMIRU</h1>
+                <div class="description">
+                    <p>SOKOMIRU（そこみる）は、YouTubeを通じてスキルを身につけたい方にピッタリのアプリケーション。</p>
+                    <p>動画のなかの、何度でも見返したい場面をメモと一緒に記録できるのが大きな特徴です。</p>
+                    <p>さっそく登録してあなたの学びをブーストしましょう。</p>
                 </div>
+            </div>
+            <div class="signup__form">
+                <form class="form" method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <div class="form__head">会員登録</div>
+                    <div class="form__item">
+                        <label for="name">お名前<span　class="is-required">※必須</span></label>
+                        <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
+                        @if ($errors->has('name'))
+                            <div class="form__error">{{ $errors->first('name') }}</div>
+                        @endif
+                    </div>
+                    <div class="form__item">
+                        <label for="username">ユーザー名<span　class="is-required">※必須</span></label>
+                        <div class="form__item__description">半角英数字・あとから変更可能</div>
+                        <input id="username" type="text" class="@error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required>
+                        @if ($errors->has('username'))
+                            <div class="form__error">{{ $errors->first('username') }}</div>
+                        @endif
+                    </div>
+                    <div class="form__item">
+                        <label for="email">メールアドレス<span　class="is-required">※必須</span></label>
+                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        @if ($errors->has('email'))
+                            <div class="form__error">{{ $errors->first('email') }}</div>
+                        @endif
+                    </div>
+                    <div class="form__item">
+                        <label for="password">パスワード<span　class="is-required">※必須</span></label>
+                        <div class="form__item__description">8文字以上の半角英数記号</div>
+                        <div class="form__item__password">
+                            <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <span class="js-password-toggle material-icons">visibility</span>
+                        </div>
+                        @if ($errors->has('password'))
+                            <div class="form__error">{{ $errors->first('password') }}</div>
+                        @endif
+                    </div>
+                    <div class="form__item">
+                        <label for="password-confirm">パスワード（確認用）<span　class="is-required">※必須</span></label>
+                        <div class="form__item__password">
+                            <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
+                            <span class="js-password-toggle material-icons">visibility</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="form__button">新規登録</button>
+                    <div class="form__login">アカウントをお持ちですか？<a href="{{ route('login') }}">ログインはこちら</a></div>
+                    
+                </form>
             </div>
         </div>
     </div>
