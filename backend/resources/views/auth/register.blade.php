@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <button type="submit" class="form__button">新規登録</button>
-                    <div class="form__login">アカウントをお持ちですか？<a href="{{ route('login') }}">ログインはこちら</a></div>
+                    <div class="form__button-subtext">アカウントをお持ちですか？<a href="{{ route('login') }}">ログインはこちら</a></div>
                     
                 </form>
             </div>

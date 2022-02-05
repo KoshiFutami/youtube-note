@@ -4,74 +4,36 @@
 @section('description', 'こちらはSOKOMIRUのユーザーログインページです。SOKOMIRUは、YouTube動画の場面をちょっとしたメモと一緒にアプリに残すことができるアプリです。')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">ユーザー名</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a href="{{ route('login.guest') }}">ゲストログイン</a>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+<div class="section Login">
+    <div class="section__inner">
+        <div class="login-form">
+            <form class="form" method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="form__head">SOKOMIRUにログイン</div>
+                <div class="form__item">
+                    <label for="username">ユーザー名</label>
+                    <input id="username" type="text" class="@error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required>
+                    @if ($errors->has('username'))
+                        <div class="form__error">{{ $errors->first('username') }}</div>
+                    @endif
                 </div>
-            </div>
+                <div class="form__item">
+                    <label for="password">パスワード</label>
+                    <div class="form__item__password">
+                        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <span class="js-password-toggle material-icons">visibility</span>
+                    </div>
+                    @if ($errors->has('password'))
+                        <div class="form__error">{{ $errors->first('password') }}</div>
+                    @endif
+                </div>
+                <div class="form__item">
+                    <label class="form__item__check-label remember-me" for="remember"><input class="form__item__check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>ログインしたままにする</label>
+                </div>
+                <button type="submit" class="form__button">ログイン</button>
+                <div class="form__button-subtext"><a href="{{ route('register') }}">会員登録</a> / <a href="{{ route('login.guest') }}">ゲストログイン</a> / <a href="{{ route('password.request') }}">パスワードを忘れた方</a></div>
+                
+            </form>
         </div>
     </div>
 </div>

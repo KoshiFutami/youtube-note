@@ -12581,6 +12581,22 @@ form
   line-height: 1.6;
   color: #717171;
 }
+.form label.form__item__check-label {
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: #313131;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.form label.form__item__check-label.remember-me {
+  font-size: 0.8rem;
+  color: #616161;
+}
+.form .form__item__check-input {
+  margin-right: 6px;
+  margin-bottom: 2px;
+}
 .form .form__item__password {
   position: relative;
   margin-top: 8px;
@@ -12637,6 +12653,24 @@ form
   .form .form__button:hover {
     color: #096fc8;
     background: #fff;
+  }
+}
+.form .form__button-subtext {
+  margin-top: 16px;
+  color: #616161;
+  font-size: 0.85rem;
+}
+.form .form__button-subtext a {
+  text-decoration: underline;
+  display: inline-block;
+  color: #0066c0;
+}
+@media (min-width: 768px) {
+  .form .form__button-subtext {
+    transition-duration: 0.2s;
+  }
+  .form .form__button-subtext a:hover {
+    text-decoration: none;
   }
 }
 .form .form__cancel {
@@ -12733,24 +12767,6 @@ form
     text-align: left;
   }
 }
-.form .form__login {
-  margin-top: 16px;
-  color: #616161;
-  font-size: 0.85rem;
-}
-.form .form__login a {
-  text-decoration: underline;
-  display: inline-block;
-  color: #0066c0;
-}
-@media (min-width: 768px) {
-  .form .form__login {
-    transition-duration: 0.2s;
-  }
-  .form .form__login a:hover {
-    text-decoration: none;
-  }
-}
 
 /*  
 section.ContactForm
@@ -12827,4 +12843,16 @@ section.Signup
   .signup__form {
     margin-left: 0;
   }
+}
+
+/*  
+section.Login
+---------------------------------*/
+.login-form {
+  margin: auto;
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  padding: 32px 32px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
