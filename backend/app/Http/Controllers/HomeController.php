@@ -30,12 +30,20 @@ class HomeController extends Controller
         foreach ($popular_tags as $index => $tag) {
             $popular_tags_notes[$index] = $tag->notes()->orderBy('created_at', 'DESC')->take(3)->get();
         }
-
-        return view('home', [
-            'my_notes' => $my_notes,
-            'others_notes' => $others_notes,
-            'popular_tags' => $popular_tags,
-            'popular_tags_notes' => $popular_tags_notes,
-        ]);
+        if (auth()->user()) {
+            return view('home', [
+                'my_notes' => $my_notes,
+                'others_notes' => $others_notes,
+                'popular_tags' => $popular_tags,
+                'popular_tags_notes' => $popular_tags_notes,
+            ]);
+        } else {
+            return view('home', [
+                'others_notes' => $others_notes,
+                'popular_tags' => $popular_tags,
+                'popular_tags_notes' => $popular_tags_notes,
+            ]);
+        }
+        
     }
 }
