@@ -11823,6 +11823,7 @@ notes-list__head
   width: 100%;
   font-size: 1.4rem;
   color: #212121;
+  line-height: 1.6;
 }
 
 /*  
@@ -11830,7 +11831,7 @@ notes-list__button
 ---------------------------------*/
 .notes-list__button {
   text-align: right;
-  margin-top: 8px;
+  margin-bottom: 24px;
   width: 100%;
 }
 @media (max-width: 767px) {

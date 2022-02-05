@@ -39,7 +39,7 @@
 <div class="section OthersNotes">
     <div class="section__inner">
         <div class="notes-list">
-            <div class="notes-list__head">SOKOMIRUユーザーが最近投稿したメモ</div>
+            <div class="notes-list__head">SOKOMIRUユーザーのメモ</div>
             <div class="notes-list__button"><a href="">SOKOMIRUユーザーのメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
         @if (!$others_notes->isEmpty())
             @foreach ($others_notes as $note)
