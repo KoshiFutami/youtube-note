@@ -36,13 +36,13 @@
     </div>
 </div>
 @endif
-<div class="section OthersNotes">
+<div class="section UsersNotes">
     <div class="section__inner">
         <div class="notes-list">
             <div class="notes-list__head">SOKOMIRUユーザーのメモ</div>
             <div class="notes-list__button"><a href="">SOKOMIRUユーザーのメモをすべて見る<span class="material-icons">chevron_right</span></a></div>
-        @if (!$others_notes->isEmpty())
-            @foreach ($others_notes as $note)
+        @if (!$users_notes->isEmpty())
+            @foreach ($users_notes as $note)
             <a href="/notes/{{ $note->id }}" class="note">
                 <div class="note__figure">
                     <img src="https://img.youtube.com/vi/{{ $note->yt_video_id }}/mqdefault.jpg">
