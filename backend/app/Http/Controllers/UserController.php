@@ -77,10 +77,6 @@ class UserController extends Controller
         $notes = $user->notes()->orderBy('created_at', 'DESC')->get();
 
         $tags = [];
-        // foreach ($notes as $note) {
-        //     $note_tags = $note->tags()->pluck('name')->toArray();
-        //     $tags = array_merge($tags, $note_tags);
-        // }
         foreach ($notes as $note) {
             $note_tags = $note->tags->toArray();
             $tags = array_merge($tags, $note_tags);
