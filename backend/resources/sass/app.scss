@@ -1530,10 +1530,11 @@ interests
     .interest {
         display: inline-block;
         margin-right: 16px;
+        margin-bottom: 12px;
         font-size: .9rem;
         color: #fff;
         background-color: #096fc8;
-        padding: 4px 16px;
+        padding: 4px 12px;
         border-radius: 4px;
         @include hover {
             transition-duration: .2s;
