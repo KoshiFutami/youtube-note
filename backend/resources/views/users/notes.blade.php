@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', '検索｜SOKOMIRU')
-@section('description', 'YouTube動画を使って語学やスポーツの勉強をしている時、「この部分をまたすぐに見ることができたら良いのに」と思ったことはありませんか？SOKOMIRUを導入することで、あなたがもう1度見たい動画の場面を一言メモと一緒に残して、後からサクッと効率的に動画を見直せるようになります。')
+@section('title', $user->name . 'のメモ一覧｜SOKOMIRU')
+@section('description', $user->name . 'がSOKOMIRUに投稿したメモをすべてご覧いただけます。')
 
 @section('content')
 <div class="section UsersNotes">
     <div class="section__inner">
         <div class="interests">
-            <div class="interests__head">{{ $user->name }}さんが興味・関心のあることは？</div>
+            <div class="interests__head">{{ $user->name }}さんの興味・関心は？</div>
             <div class="interests-list">
             @if (count($tags) > 0)
                 @foreach ($tags as $tag)
