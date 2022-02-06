@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Prophecy\Argument\Token\InArrayToken;
 
 class Note extends Model
 {
@@ -31,6 +32,36 @@ class Note extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+
+    /**
+     * このメモに紐づくブックマークを取得
+     */
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class, 'note_id');
+    }
+
+    /**
+     * ブックマークされているか判定
+     * @return bool true→ブックマーク済、false→未ブックマーク
+     */
+    public function is_bookmarked_by_auth_user()
+    {
+        $auth_id = \Auth::id();
+
+        $users_bookmarking = [];
+
+        foreach ($this->bookmarks as $bookmark) {
+            array_push($users_bookmarking, $bookmark->user_id);
+        } 
+
+        if (in_array($auth_id, $users_bookmarking)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

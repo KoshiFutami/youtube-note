@@ -92,4 +92,20 @@ class UserController extends Controller
             'tags' => $tags,
         ]);
     }
+
+    /**
+     * ユーザーが保存したメモの一覧を表示
+     * @return view
+     * @param string $username
+     */
+    public function showBookmarks($username)
+    {
+        $user = User::where('username', $username)->first();
+        $notes = $user->bookmark_notes()->orderBy('created_at', 'desc')->get();
+
+        return view('users.bookmarks', [
+            'user' => $user,
+            'notes' => $notes,
+        ]);
+    }
 }
