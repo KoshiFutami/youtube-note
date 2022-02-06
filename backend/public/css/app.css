@@ -12069,6 +12069,22 @@ note-detail
   cursor: pointer;
   position: relative;
 }
+.note-detail .note-detail__bookmark .button-bookmark:before,
+.note-detail .note-detail__bookmark .button-unbookmark:before {
+  content: none;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0px;
+  height: 0px;
+  margin: auto;
+  border-style: solid;
+  border-color: #999 transparent transparent transparent;
+  border-width: 4px 4px 0 4px;
+  transition-duration: 0.2s;
+  transition-delay: 0.1s;
+}
 .note-detail .note-detail__bookmark .button-bookmark::after,
 .note-detail .note-detail__bookmark .button-unbookmark::after {
   content: none;
@@ -12081,8 +12097,8 @@ note-detail
   position: absolute;
   top: -30px;
   left: 50%;
-  display: inline-block;
   transform: translateX(-50%);
+  display: inline-block;
   border-radius: 4px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -12101,18 +12117,24 @@ note-detail
 .note-detail .note-detail__bookmark .button-unbookmark .material-icons {
   color: #096fc8;
 }
-.note-detail .note-detail__bookmark:hover {
-  background: #F6F9F9;
-}
-.note-detail .note-detail__bookmark:hover .button-bookmark::after,
+@media (min-width: 768px) {
+  .note-detail .note-detail__bookmark:hover {
+    background: #F6F9F9;
+  }
+  .note-detail .note-detail__bookmark:hover .button-bookmark::before,
+.note-detail .note-detail__bookmark:hover .button-unbookmark::before {
+    content: "";
+  }
+  .note-detail .note-detail__bookmark:hover .button-bookmark::after,
 .note-detail .note-detail__bookmark:hover .button-unbookmark::after {
-  content: attr(data-tooltip);
-}
-.note-detail .note-detail__bookmark:hover .button-bookmark .material-icons {
-  color: #096fc8;
-}
-.note-detail .note-detail__bookmark:hover .button-unbookmark .material-icons {
-  color: #9e9e9e;
+    content: attr(data-tooltip);
+  }
+  .note-detail .note-detail__bookmark:hover .button-bookmark .material-icons {
+    color: #096fc8;
+  }
+  .note-detail .note-detail__bookmark:hover .button-unbookmark .material-icons {
+    color: #9e9e9e;
+  }
 }
 .note-detail .note-detail__nav-button {
   position: absolute;
