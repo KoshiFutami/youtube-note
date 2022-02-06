@@ -555,6 +555,7 @@ notes-list__head
     font-size: 1.4rem;
     color: #212121;
     line-height: 1.6;
+    .BookmarkedNotes &,
     .TagNotes &,
     .AllNotes &,
     .UsersNotes & {
@@ -700,6 +701,14 @@ note-detail
         justify-content: center;
         transition: .2s;
         border-radius: 50%;
+        @include tab {
+            top: 32px;
+            right: 94px;
+        }
+        @include sp {
+            top: 16px;
+            right: 78px;
+        }
         form {
             width: 100%;
             height: 100%;
@@ -732,16 +741,21 @@ note-detail
                 transition-delay: .1s;
             }
             .material-icons {
-                color: #9e9e9e;
                 vertical-align: middle;
                 transition: .2s;
             }
             
         }
         .button-bookmark {
+            .material-icons {
+                color: #9e9e9e;
+            }
 
         }
         .button-unbookmark {
+            .material-icons {
+                color: #096fc8;
+            }
 
         }
         &:hover {
@@ -752,8 +766,15 @@ note-detail
                     content: attr(data-tooltip);
                 }
             }
-            .material-icons {
-                color: #313131;
+            .button-bookmark {
+                .material-icons {
+                    color: #096fc8;
+                }
+            }
+            .button-unbookmark {
+                .material-icons {
+                    color: #9e9e9e;
+                }
             }
         }
     }
@@ -822,6 +843,9 @@ note-detail
         border: 1px solid #eee;
         box-shadow: 0 2px 4px rgba(0,0,0,.1);
         width: 80px;
+        @include sp {
+            width: 100px;
+        }
 
     }
     .note-detail__nav__item {
@@ -837,6 +861,10 @@ note-detail
         cursor: pointer;
         &:hover {
             color: #313131;
+        }
+        @include sp {
+            font-size: 1rem;
+            padding: 12px 12px;
         }
     }
     .note-detail__nav__item + .note-detail__nav__item {
@@ -857,12 +885,17 @@ note-detail
             &:hover {
                 color: #313131;
             }
+            @include sp {
+                font-size: 1rem;
+                padding: 12px 12px;
+            }
         }
     }
     .note-detail__tags {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 16px;
+        max-width: calc(100% - 120px);
     }
     .note-detail__tag {
         display: inline-block;
@@ -870,6 +903,7 @@ note-detail
         color: #212121;
         background: #eaeaea;
         margin-right: 8px;
+        margin-bottom: 8px;
         border-radius: 6px;
         line-height: 1.2;
         font-size: .8rem;

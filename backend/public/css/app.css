@@ -11897,11 +11897,11 @@ notes-list__head
   color: #212121;
   line-height: 1.6;
 }
-.TagNotes .notes-list__head, .AllNotes .notes-list__head, .UsersNotes .notes-list__head {
+.BookmarkedNotes .notes-list__head, .TagNotes .notes-list__head, .AllNotes .notes-list__head, .UsersNotes .notes-list__head {
   margin-bottom: 24px;
 }
 @media (max-width: 767px) {
-  .TagNotes .notes-list__head, .AllNotes .notes-list__head, .UsersNotes .notes-list__head {
+  .BookmarkedNotes .notes-list__head, .TagNotes .notes-list__head, .AllNotes .notes-list__head, .UsersNotes .notes-list__head {
     margin-bottom: 16px;
   }
 }
@@ -12043,6 +12043,18 @@ note-detail
   transition: 0.2s;
   border-radius: 50%;
 }
+@media (max-width: 959px) {
+  .note-detail .note-detail__bookmark {
+    top: 32px;
+    right: 94px;
+  }
+}
+@media (max-width: 767px) {
+  .note-detail .note-detail__bookmark {
+    top: 16px;
+    right: 78px;
+  }
+}
 .note-detail .note-detail__bookmark form {
   width: 100%;
   height: 100%;
@@ -12080,9 +12092,14 @@ note-detail
 }
 .note-detail .note-detail__bookmark .button-bookmark .material-icons,
 .note-detail .note-detail__bookmark .button-unbookmark .material-icons {
-  color: #9e9e9e;
   vertical-align: middle;
   transition: 0.2s;
+}
+.note-detail .note-detail__bookmark .button-bookmark .material-icons {
+  color: #9e9e9e;
+}
+.note-detail .note-detail__bookmark .button-unbookmark .material-icons {
+  color: #096fc8;
 }
 .note-detail .note-detail__bookmark:hover {
   background: #F6F9F9;
@@ -12091,8 +12108,11 @@ note-detail
 .note-detail .note-detail__bookmark:hover .button-unbookmark::after {
   content: attr(data-tooltip);
 }
-.note-detail .note-detail__bookmark:hover .material-icons {
-  color: #313131;
+.note-detail .note-detail__bookmark:hover .button-bookmark .material-icons {
+  color: #096fc8;
+}
+.note-detail .note-detail__bookmark:hover .button-unbookmark .material-icons {
+  color: #9e9e9e;
 }
 .note-detail .note-detail__nav-button {
   position: absolute;
@@ -12161,6 +12181,11 @@ note-detail
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 80px;
 }
+@media (max-width: 767px) {
+  .note-detail .note-detail__nav__items {
+    width: 100px;
+  }
+}
 .note-detail .note-detail__nav__item {
   display: block;
   background: #fff;
@@ -12175,6 +12200,12 @@ note-detail
 }
 .note-detail .note-detail__nav__item:hover {
   color: #313131;
+}
+@media (max-width: 767px) {
+  .note-detail .note-detail__nav__item {
+    font-size: 1rem;
+    padding: 12px 12px;
+  }
 }
 .note-detail .note-detail__nav__item + .note-detail__nav__item {
   border-top: 1px solid #eee;
@@ -12194,10 +12225,17 @@ note-detail
 .note-detail .note-detail__nav__item.delete input[type=submit]:hover {
   color: #313131;
 }
+@media (max-width: 767px) {
+  .note-detail .note-detail__nav__item.delete input[type=submit] {
+    font-size: 1rem;
+    padding: 12px 12px;
+  }
+}
 .note-detail .note-detail__tags {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 16px;
+  max-width: calc(100% - 120px);
 }
 .note-detail .note-detail__tag {
   display: inline-block;
@@ -12205,6 +12243,7 @@ note-detail
   color: #212121;
   background: #eaeaea;
   margin-right: 8px;
+  margin-bottom: 8px;
   border-radius: 6px;
   line-height: 1.2;
   font-size: 0.8rem;
