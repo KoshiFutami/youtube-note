@@ -12034,7 +12034,7 @@ note-detail
 .note-detail .note-detail__bookmark {
   position: absolute;
   top: 48px;
-  right: 110px;
+  right: 56px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -12046,13 +12046,13 @@ note-detail
 @media (max-width: 959px) {
   .note-detail .note-detail__bookmark {
     top: 32px;
-    right: 94px;
+    right: 40px;
   }
 }
 @media (max-width: 767px) {
   .note-detail .note-detail__bookmark {
     top: 16px;
-    right: 78px;
+    right: 24px;
   }
 }
 .note-detail .note-detail__bookmark form {
@@ -12139,7 +12139,7 @@ note-detail
 .note-detail .note-detail__nav-button {
   position: absolute;
   top: 48px;
-  right: 56px;
+  right: 110px;
   color: #9e9e9e;
   cursor: pointer;
   transition: 0.2s;
@@ -12153,13 +12153,13 @@ note-detail
 @media (max-width: 959px) {
   .note-detail .note-detail__nav-button {
     top: 32px;
-    right: 40px;
+    right: 94px;
   }
 }
 @media (max-width: 767px) {
   .note-detail .note-detail__nav-button {
     top: 16px;
-    right: 24px;
+    right: 78px;
   }
 }
 .note-detail .note-detail__nav-button:hover {
@@ -12189,9 +12189,21 @@ note-detail
   pointer-events: none;
   visibility: hidden;
   position: absolute;
-  top: 56px;
-  right: 40px;
+  top: 90px;
+  right: 88px;
   z-index: 97;
+}
+@media (max-width: 959px) {
+  .note-detail .note-detail__nav {
+    top: 72px;
+    right: 72px;
+  }
+}
+@media (max-width: 767px) {
+  .note-detail .note-detail__nav {
+    top: 56px;
+    right: 48px;
+  }
 }
 .note-detail .note-detail__nav.is-active {
   opacity: 1;
