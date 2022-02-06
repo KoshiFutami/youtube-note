@@ -58,6 +58,14 @@ class User extends Authenticatable
     }
 
     /**
+     * ユーザーがブックマークしたメモを取得
+     */
+    public function bookmark_notes()
+    {
+        return $this->belongsToMany(Note::class, 'bookmarks', 'user_id', 'note_id');
+    }
+
+    /**
      * プロフィール画像を保存
      */
     public static function storeProfileThumbnail($thumnail_file, $user_id)
