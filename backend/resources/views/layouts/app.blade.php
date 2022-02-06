@@ -98,7 +98,7 @@
         <footer class="footer">
             <div class="footer__inner">
                 <nav class="footer__nav">
-                    <a href="" class="footer__nav__item">運営者情報</a>
+                    <a href="{{ route('users.show', 'koshifutami') }}" class="footer__nav__item">運営者情報</a>
                     <a href="{{ route('contact.form') }}" class="footer__nav__item">お問い合わせ</a>
                 </nav>
                 <div class="footer__copyright">Copyright © {{ date('Y') }} SOKOMIRU</div>
