@@ -56,12 +56,13 @@ Route::prefix('tags')->name('tags.')->group(function() {
 });
 
 
-// Todo：認証済ユーザーが自分のページだけ編集などできるようにルーティングを設定
 Route::name('users.')->group(function() {
-    Route::get('/{username}/edit', [UserController::class, 'edit'])->name('edit');
-    Route::post('/{username}/update', [UserController::class, 'update'])->name('update');
+    Route::middleware('auth')->group(function () {
+        Route::get('/{username}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::post('/{username}/update', [UserController::class, 'update'])->name('update');
+        Route::get('/{username}/bookmarks', [UserController::class, 'showBookmarks'])->name('bookmarks');
+    });
     Route::get('/{username}/notes', [UserController::class, 'showNotes'])->name('notes');
-    Route::get('/{username}/bookmarks', [UserController::class, 'showBookmarks'])->name('bookmarks');
     Route::get('/{username}', [UserController::class, 'show'])->name('show');
 });
 
