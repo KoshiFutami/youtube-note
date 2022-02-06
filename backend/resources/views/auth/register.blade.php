@@ -18,7 +18,7 @@
             <div class="signup__form">
                 <form class="form" method="POST" action="{{ route('register') }}">
                     @csrf
-                    <div class="form__head">会員登録</div>
+                    <div class="form__head">ユーザー登録</div>
                     <div class="form__item">
                         <label for="name">お名前<span　class="is-required">※必須</span></label>
                         <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <button type="submit" class="form__button">新規登録</button>
-                    <div class="form__button-subtext">アカウントをお持ちですか？<a href="{{ route('login') }}">ログインはこちら</a></div>
+                    <div class="form__button-subtext">アカウントをお持ちですか？<a href="{{ route('login') }}">ログインはこちら</a><br><a href="{{ route('login.guest') }}">ゲストログイン</a>でお試しもできます。</div>
                     
                 </form>
             </div>
