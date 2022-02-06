@@ -555,6 +555,7 @@ notes-list__head
     font-size: 1.4rem;
     color: #212121;
     line-height: 1.6;
+    .BookmarkedNotes &,
     .TagNotes &,
     .AllNotes &,
     .UsersNotes & {
@@ -689,6 +690,114 @@ note-detail
             padding: 24px 24px;
         }
     }
+    .note-detail__bookmark {
+        position: absolute;
+        top: 48px;
+        right: 110px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .2s;
+        border-radius: 50%;
+        @include tab {
+            top: 32px;
+            right: 94px;
+        }
+        @include sp {
+            top: 16px;
+            right: 78px;
+        }
+        form {
+            width: 100%;
+            height: 100%;
+        }
+        .button-bookmark,
+        .button-unbookmark {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            &:before{
+                content: none;
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0px;
+                height: 0px;
+                margin: auto;
+                border-style: solid;
+                border-color: #999 transparent transparent transparent;
+                border-width: 4px 4px 0 4px;
+                transition-duration: .2s;
+                transition-delay: .1s;
+              }
+            &::after {
+                content: none;
+                background: #999;
+                color: #fff;
+                font-size: .65rem;
+                height: 20px;
+                line-height: 20px;
+                padding: 0 8px;
+                position: absolute;
+                top: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: inline-block;
+                border-radius: 4px;
+                width: max-content;
+                transition-duration: .2s;
+                transition-delay: .1s;
+            }
+            .material-icons {
+                vertical-align: middle;
+                transition: .2s;
+            }
+            
+        }
+        .button-bookmark {
+            .material-icons {
+                color: #9e9e9e;
+            }
+
+        }
+        .button-unbookmark {
+            .material-icons {
+                color: #096fc8;
+            }
+
+        }
+        @include hover {
+            &:hover {
+                background: #F6F9F9;
+                .button-bookmark,
+                .button-unbookmark {
+                    &::before {
+                        content: "";
+                    }
+                    &::after {
+                        content: attr(data-tooltip);
+                    }
+                }
+                .button-bookmark {
+                    .material-icons {
+                        color: #096fc8;
+                    }
+                }
+                .button-unbookmark {
+                    .material-icons {
+                        color: #9e9e9e;
+                    }
+                }
+            }
+        }
+    }
     .note-detail__nav-button {
         position: absolute;
         top: 48px;
@@ -754,6 +863,9 @@ note-detail
         border: 1px solid #eee;
         box-shadow: 0 2px 4px rgba(0,0,0,.1);
         width: 80px;
+        @include sp {
+            width: 100px;
+        }
 
     }
     .note-detail__nav__item {
@@ -769,6 +881,10 @@ note-detail
         cursor: pointer;
         &:hover {
             color: #313131;
+        }
+        @include sp {
+            font-size: 1rem;
+            padding: 12px 12px;
         }
     }
     .note-detail__nav__item + .note-detail__nav__item {
@@ -789,12 +905,17 @@ note-detail
             &:hover {
                 color: #313131;
             }
+            @include sp {
+                font-size: 1rem;
+                padding: 12px 12px;
+            }
         }
     }
     .note-detail__tags {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 16px;
+        max-width: calc(100% - 120px);
     }
     .note-detail__tag {
         display: inline-block;
@@ -802,6 +923,7 @@ note-detail
         color: #212121;
         background: #eaeaea;
         margin-right: 8px;
+        margin-bottom: 8px;
         border-radius: 6px;
         line-height: 1.2;
         font-size: .8rem;

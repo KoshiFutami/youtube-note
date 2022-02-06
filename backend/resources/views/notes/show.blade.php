@@ -26,6 +26,22 @@
                     </div>
                 </div>
             @endif
+            @if (Auth::check())
+            <div class="note-detail__bookmark">
+                @if (!$note->is_bookmarked_by_auth_user())
+                    <form action="{{ route('bookmark.store', $note->id) }}" method="post">
+                        @csrf
+                        <button class="button-bookmark" data-tooltip="ブックマークに保存"><i class="material-icons">bookmark_add</i></button>
+                    </form>
+                @else
+                    <form action="{{ route('bookmark.destroy', $note->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class="button-unbookmark" data-tooltip="ブックマーク解除"><i class="material-icons">bookmark_added</i></button>
+                    </form>
+                @endif
+            </div>
+            @endif
             @if (count($note->tags) > 0)
                 <div class="note-detail__tags">
                 @foreach ($note->tags as $tag)
