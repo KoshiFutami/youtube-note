@@ -35,6 +35,7 @@
                         <li><a href="{{ route('notes.search') }}"><i class="material-icons">search</i></a></li>
                         <li><a href="{{ route('notes.create') }}">新規追加</a></li>
                         <li><a href="{{ route('users.notes', auth()->user()->username) }}">自分のメモ</a></li>
+                        <li><a href="{{ route('users.bookmarks', auth()->user()->username) }}">保存したメモ</a></li>
                     </ul>
                 </nav>
             @endif
