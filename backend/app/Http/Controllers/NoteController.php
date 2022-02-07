@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Builder;
 
 class NoteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create', 'store', 'update', 'destroy']);
+    }
+
     /**
      * メモ作成画面を表示
      * @return view
@@ -73,6 +78,8 @@ class NoteController extends Controller
     {
         $note = Note::find($id);
 
+        $this->authorize('update', $note);
+
         $video_url = $request->video_url;
         $yt_video_id = Note::getYtVideoId($video_url);
         $note->yt_video_id = $yt_video_id;
@@ -113,12 +120,13 @@ class NoteController extends Controller
     {
         $note = Note::find($id);
         
-        $note_title = $note->title;
+        $this->authorize('update', $note);
+
+        // $note_title = $note->title;
         
         $note->tags()->sync([]);
         $note->delete();
 
-        // Todo: リダイレクト先をユーザーのメモ一覧ページに修正
         return redirect()->route('home');
     }
 
