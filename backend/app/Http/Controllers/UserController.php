@@ -91,11 +91,14 @@ class UserController extends Controller
         $user = User::where('username', $username)->first();
         $notes = $user->notes()->orderBy('created_at', 'DESC')->get();
 
+        // すべてのメモに紐づくタグを取得
+        // todo: 他に効率的な方法がありそう！
         $tags = [];
         foreach ($notes as $note) {
             $note_tags = $note->tags->toArray();
             $tags = array_merge($tags, $note_tags);
         }
+        $tags = array_unique($tags);
 
         return view('users.notes', [
             'user' => $user,
