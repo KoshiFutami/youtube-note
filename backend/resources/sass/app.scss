@@ -632,11 +632,13 @@ note
     .note__title {
         color: #212121;
         font-size: 1rem;
-        font-weight: bold;
-        line-height: 1.5;
+        line-height: 1.6;
         margin-bottom: 12px;
         padding: 0 16px;
         transition: .2s;
+        @include sp {
+            font-size: 1.2rem;
+        }
     }
     .note__user {
         display: flex;
@@ -657,8 +659,11 @@ note
         }
         .username {
             margin-left: 12px;
-            color: #9e9e9e;
+            color: #616161;
             font-size: .85rem;
+            @include sp {
+                font-size: .95rem;
+            }
         }
     }
 }
@@ -927,7 +932,7 @@ note-detail
     }
     .note-detail__tag {
         display: inline-block;
-        padding: 6px 12px;
+        padding: 4px 8px;
         color: #212121;
         background: #eaeaea;
         margin-right: 8px;
@@ -943,11 +948,17 @@ note-detail
         color: #212121;
         font-size: 1.6rem;
         margin: 0 0;
+        @include sp {
+            font-size: 1.4rem;
+        }
     }
     .note-detail__content {
         color: #515151;
         font-size: 1rem;
         margin: 24px 0 0;
+        @include sp {
+            margin-top: 16px;
+        }
         p {
             line-height: 1.7;
         }
@@ -957,6 +968,9 @@ note-detail
         align-items: center;
         transition-duration: .2s;
         margin-top: 24px;
+        @include sp {
+            margin-top: 16px;
+        }
         &:hover {
             .username {
                 color: #313131;
@@ -974,7 +988,7 @@ note-detail
             }
         }
         .username {
-            color: #9e9e9e;
+            color: #616161;
             font-size: 1rem;
             margin-left: 8px;
         }
