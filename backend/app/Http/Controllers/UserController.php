@@ -11,6 +11,11 @@ use Laravel\Ui\Presets\React;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['edit', 'update', 'showBookmarks']);
+    }
+
     /**
      * ユーザー詳細ページを表示
      * @return view
@@ -30,11 +35,14 @@ class UserController extends Controller
     /**
      * ユーザー情報編集ページを表示
      * @return view
+     * @param string $username
      */
-    public function edit()
+    public function edit($username)
     {
-        $user = Auth::user();
-   
+        $user = User::where('username', $username)->first();
+
+        $this->authorize('edit', $user);
+
         return view('users.edit',[
             'user' => $user,
         ]);
@@ -43,11 +51,14 @@ class UserController extends Controller
     /**
      * ユーザー情報を更新
      * @return view
+     * @param string $username
      * @param array $request
      */
-    public function update(UserRequest $request)
+    public function update($username, UserRequest $request)
     {
-        $user = Auth::user();
+        $user = User::where('username', $username)->first();
+
+        $this->authorize('update', $user);
 
         $user->name = $request->name;
         $user->username = $request->username;
