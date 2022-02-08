@@ -92,20 +92,13 @@ class UserController extends Controller
         $notes = $user->notes()->orderBy('created_at', 'DESC')->get();
 
         // すべてのメモに紐づくタグを取得
-        // todo: タグ名の重複が表示されてしまう
-        $tags = [];
+        $tags = collect([]);
         foreach ($notes as $note) {
-            $note_tags = $note->tags->toArray();
-            $tags = array_merge($tags, $note_tags);
+            $note_tags = $note->tags;
+            $tags = $tags->concat($note_tags);
         }
-
-        // $tags = [];
-        // foreach ($notes as $note) {
-        //     $note_tags = $note->tags->toArray();
-        //     $tags = array_merge($tags, $note_tags);
-        // }
-
-        // dd($tags);
+        // 重複を解消
+        $tags = $tags->unique('id');
 
         return view('users.notes', [
             'user' => $user,
