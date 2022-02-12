@@ -99,3 +99,33 @@ $(function() {
         }
     });
 });
+
+
+// メモのブックマーク処理
+$(function() {
+    const $bookmarkButton = $('.button-bookmark');
+    let noteId;
+
+    $bookmarkButton.on('click', function() {
+        let $this = $(this);
+        noteId = $(this).data('note-id');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/notes/' + noteId + '/bookmark',
+            method: 'POST',
+            data: {
+                'note_id': noteId
+            }
+        })
+        .done(function (data) {
+            console.log('It successed!');
+            $this.toggleClass('is-bookmarked');
+        })
+        .fail(function () {
+            console.log('It failed!');
+        });
+    });
+});
