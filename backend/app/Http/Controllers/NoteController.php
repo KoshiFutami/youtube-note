@@ -12,7 +12,7 @@ class NoteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['create', 'store', 'update', 'destroy']);
+        $this->middleware('auth')->only(['create', 'store', 'update', 'destroy', 'bookmark']);
     }
 
     /**
@@ -149,36 +149,53 @@ class NoteController extends Controller
       * メモ検索ページを表示
       * @return view
       */
-      public function search(Request $request)
-      {
-          if ($request->keywords) {
+    public function search(Request $request)
+    {
+        if ($request->keywords) {
 
-            $query = Note::query();
+        $query = Note::query();
 
-            // 全角スペースを半角スペースに変換し
-            $input = mb_convert_kana($request->keywords, 's', 'utf-8');
-            // 半角スペースで区切り、配列に挿入
-            $keywords = preg_split('/ ++/', $input, -1, PREG_SPLIT_NO_EMPTY);
+        // 全角スペースを半角スペースに変換し
+        $input = mb_convert_kana($request->keywords, 's', 'utf-8');
+        // 半角スペースで区切り、配列に挿入
+        $keywords = preg_split('/ ++/', $input, -1, PREG_SPLIT_NO_EMPTY);
 
-            foreach ($keywords as $keyword) {
-                $query->where(function ($query) use ($keyword) {
-                    $query->where("title", "like", "%{$keyword}%")
-                        ->orWhere("content", "like", "{$keyword}%")
-                        ->orWhereHas("tags", function (Builder $query) use ($keyword) {
-                            $query->where("name", "like", "%{$keyword}%");
-                        });
-                });
-            }
+        foreach ($keywords as $keyword) {
+            $query->where(function ($query) use ($keyword) {
+                $query->where("title", "like", "%{$keyword}%")
+                    ->orWhere("content", "like", "{$keyword}%")
+                    ->orWhereHas("tags", function (Builder $query) use ($keyword) {
+                        $query->where("name", "like", "%{$keyword}%");
+                    });
+            });
+        }
 
-            $notes = $query->get();
+        $notes = $query->get();
 
-            return view('notes.search', [
-                'notes' => $notes,
-                'keywords' => $request->keywords,
-            ]);
+        return view('notes.search', [
+            'notes' => $notes,
+            'keywords' => $request->keywords,
+        ]);
 
-          } else {
-                return view('notes.search');
-          }
-      }
+        } else {
+            return view('notes.search');
+        }
+    }
+
+    /**
+     * メモをブックマーク
+     * @param array $request
+     */
+    public function bookmark(Request $request)
+    {
+        $user = \Auth::user();
+        $note = Note::find($request->input('note_id'));
+
+        if ($note->is_bookmarked_by_auth_user()) {
+            $user->bookmark_notes()->detach($note->id);
+        } else {
+            $user->bookmark_notes()->attach($note->id);
+        }
+        return back();
+    }
 }

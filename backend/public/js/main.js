@@ -11018,6 +11018,30 @@ $(function () {
       $(this).text('visibility');
     }
   });
+}); // メモのブックマーク処理
+
+$(function () {
+  var $bookmarkButton = $('.button-bookmark');
+  var noteId;
+  $bookmarkButton.on('click', function () {
+    var $this = $(this);
+    noteId = $(this).data('note-id');
+    $.ajax({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: '/notes/' + noteId + '/bookmark',
+      method: 'POST',
+      data: {
+        'note_id': noteId
+      }
+    }).done(function (data) {
+      console.log('It successed!');
+      $this.toggleClass('is-bookmarked');
+    }).fail(function () {
+      console.log('It failed!');
+    });
+  });
 });
 })();
 

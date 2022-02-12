@@ -718,8 +718,7 @@ note-detail
             width: 100%;
             height: 100%;
         }
-        .button-bookmark,
-        .button-unbookmark {
+        .button-bookmark {
             width: 100%;
             height: 100%;
             display: flex;
@@ -770,32 +769,30 @@ note-detail
             .material-icons {
                 color: #9e9e9e;
             }
-
-        }
-        .button-unbookmark {
-            .material-icons {
-                color: #096fc8;
+            &.is-bookmarked {
+                .material-icons {
+                    color: #096fc8;
+                }
             }
-
         }
         @include hover {
             &:hover {
                 background: #F6F9F9;
-                .button-bookmark,
-                .button-unbookmark {
+                .button-bookmark {
                     &::before {
                         content: "";
                     }
                     &::after {
-                        content: attr(data-tooltip);
+                        content: "ブックマークに保存";
                     }
-                }
-                .button-bookmark {
                     .material-icons {
                         color: #096fc8;
                     }
                 }
-                .button-unbookmark {
+                .button-bookmark.is-bookmarked {
+                    &::after {
+                        content: "ブックマーク解除";
+                    }
                     .material-icons {
                         color: #9e9e9e;
                     }

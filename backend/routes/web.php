@@ -38,18 +38,13 @@ Route::prefix('notes')->name('notes.')->group(function() {
         Route::delete('/{id}/destroy', [NoteController::class, 'destroy'])->name('destroy');
         Route::get('/{id}/edit', [NoteController::class, 'edit'])->name('edit');
         Route::post('/{id}/update', [NoteController::class, 'update'])->name('update');
+        Route::post('/{id}/bookmark', [NoteController::class, 'bookmark'])->name('bookmark');
     });
     Route::get('/', [NoteController::class, 'showAll'])->name('index');
     Route::get('/search', [NoteController::class, 'search'])->name('search');
     Route::get('/{id}', [NoteController::class, 'show'])->name('show');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::prefix('notes')->name('bookmark.')->group(function() {
-        Route::post('/{id}/bookmark', [BookmarkController::class, 'store'])->name('store');
-        Route::delete('/{id}/unbookmark', [BookmarkController::class, 'destroy'])->name('destroy');
-    });
-});
 
 Route::prefix('tags')->name('tags.')->group(function() {
     Route::get('/{id}', [TagController::class, 'showNotes'])->name('notes');
