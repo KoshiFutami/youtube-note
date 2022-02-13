@@ -9,6 +9,10 @@ return [
             'type' => 'success',
             'text' => 'メモを更新しました。',
         ],
+        'delete' => [
+            'type' => 'success',
+            'text' => 'メモを削除しました。',
+        ],
     ],
     'user' => [
         'update' => [

@@ -131,6 +131,8 @@ class NoteController extends Controller
         $note->tags()->sync([]);
         $note->delete();
 
+        session()->flash('toastr', config('toastr.note.delete'));
+
         return redirect()->route('home');
     }
 
