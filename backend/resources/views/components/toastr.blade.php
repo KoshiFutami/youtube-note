@@ -2,7 +2,7 @@
 <script>
     document.querySelector('script[src="{{ asset("js/app.js") }}"]').onload = function() {
         toastr.options = {
-            "closeButton": true,
+            "closeButton": false,
             "debug": false,
             "newestOnTop": false,
             "progressBar": true,

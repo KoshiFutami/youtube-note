@@ -11713,7 +11713,7 @@ toastr
 button.toast-close-button {
   width: 32px;
   height: 100%;
-  position: absolute;
+  position: absolute !important;
   right: 16px;
   top: 50%;
   transform: translateY(-50%);

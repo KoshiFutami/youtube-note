@@ -140,13 +140,13 @@ toastr
     }
 }
 .toast-message {
-    width: calc(100% - 40px);
+    // width: calc(100% - 40px);
     border-right: 1px solid #eee;
 }
 button.toast-close-button {
     width: 32px;
     height: 100%;
-    position: absolute;
+    position: absolute !important;
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
