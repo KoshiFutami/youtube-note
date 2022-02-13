@@ -20,14 +20,14 @@
                     @csrf
                     <div class="form__head">ユーザー登録</div>
                     <div class="form__item">
-                        <label for="name">お名前<span　class="is-required">※必須</span></label>
+                        <label for="name">お名前<span class="is-required">※必須</span></label>
                         <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
                         @if ($errors->has('name'))
                             <div class="form__error">{{ $errors->first('name') }}</div>
                         @endif
                     </div>
                     <div class="form__item">
-                        <label for="username">ユーザー名<span　class="is-required">※必須</span></label>
+                        <label for="username">ユーザー名<span class="is-required">※必須</span></label>
                         <div class="form__item__description">半角英数字・あとから変更可能</div>
                         <input id="username" type="text" class="@error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required>
                         @if ($errors->has('username'))
@@ -35,14 +35,14 @@
                         @endif
                     </div>
                     <div class="form__item">
-                        <label for="email">メールアドレス<span　class="is-required">※必須</span></label>
+                        <label for="email">メールアドレス<span class="is-required">※必須</span></label>
                         <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                         @if ($errors->has('email'))
                             <div class="form__error">{{ $errors->first('email') }}</div>
                         @endif
                     </div>
                     <div class="form__item">
-                        <label for="password">パスワード<span　class="is-required">※必須</span></label>
+                        <label for="password">パスワード<span class="is-required">※必須</span></label>
                         <div class="form__item__description">8文字以上の半角英数記号</div>
                         <div class="form__item__password">
                             <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -53,7 +53,7 @@
                         @endif
                     </div>
                     <div class="form__item">
-                        <label for="password-confirm">パスワード（確認用）<span　class="is-required">※必須</span></label>
+                        <label for="password-confirm">パスワード（確認用）<span class="is-required">※必須</span></label>
                         <div class="form__item__password">
                             <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
                             <span class="js-password-toggle material-icons">visibility</span>
