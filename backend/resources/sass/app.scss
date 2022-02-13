@@ -10,6 +10,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// toastr
+@import 'toastr';
+
 /*---------------------------------
 独自リセット
 ---------------------------------*/
@@ -77,6 +80,88 @@ input[type="search"] {
     border-radius: 0;
     outline: none;
     background: none;
+}
+
+/*---------------------------------
+toastr
+---------------------------------*/
+/*  
+.toast
+---------------------------------*/
+#toast-container {
+    margin: 0;
+}
+#toast-container > div {
+    border-radius: 0;
+    opacity: 1 !important;
+    box-shadow: none;
+    padding: 16px 16px;
+    &:hover {
+        box-shadow: none;
+    }
+    @include sp {
+        width: 100%;
+    }
+}
+#toast-container {
+    > .toast-success,
+    > .toast-danger,
+    > .toast-error {
+        background-image: none !important;
+    }
+}
+.toast-top-right {
+    top: 24px;
+    right: 24px;
+    @include sp {
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+}
+.toast {
+    // display: flex !important;
+    // align-items: center;
+    // flex-direction: row-reverse;
+    @include sp {
+        width: 100%;
+    }
+
+}
+.toast,
+.toast-message {
+    color: #fff;
+    background: #212121;
+    opacity: 1 !important;
+    font-size: .75rem;
+    @include sp {
+        font-size: .85rem;
+    }
+}
+.toast-message {
+    width: calc(100% - 40px);
+    border-right: 1px solid #eee;
+}
+button.toast-close-button {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 1;
+    font-size: .85rem;
+    @include sp {
+        font-size: .9rem;
+    }
+    &:hover {
+        color: #fff;
+        opacity: 1;
+    }
 }
 
 /*---------------------------------

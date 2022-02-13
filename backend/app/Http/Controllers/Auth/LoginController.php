@@ -42,6 +42,9 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
+
+        session()->flash('toastr', config('toastr.auth.login'));
+
         return route('home');
     }
 
@@ -60,6 +63,8 @@ class LoginController extends Controller
         if (\Auth::loginUsingID(self::GUEST_USER_ID)) {
             return redirect('/');
         }
+
+        session()->flash('toastr', config('toastr.auth.guest'));
 
         return redirect('/');
     }
