@@ -61,10 +61,9 @@ class LoginController extends Controller
     public function guestLogin()
     {
         if (\Auth::loginUsingID(self::GUEST_USER_ID)) {
+            session()->flash('toastr', config('toastr.auth.guest'));
             return redirect('/');
         }
-
-        session()->flash('toastr', config('toastr.auth.guest'));
 
         return redirect('/');
     }
