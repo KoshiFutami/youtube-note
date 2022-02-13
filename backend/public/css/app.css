@@ -11665,7 +11665,8 @@ toastr
 }
 
 #toast-container > .toast-success,
-#toast-container > .toast-danger,
+#toast-container > .toast-info,
+#toast-container > .toast-warning,
 #toast-container > .toast-error {
   background-image: none !important;
 }
@@ -11684,11 +11685,24 @@ toastr
 
 .toast {
   position: relative;
+  padding-right: 40px;
 }
 @media (max-width: 767px) {
   .toast {
     width: 100%;
   }
+}
+.toast::after {
+  content: "×";
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.2em;
+  border-left: 1px solid #fff;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  padding: 0 16px;
+  transform: translateY(-50%);
 }
 
 .toast,
