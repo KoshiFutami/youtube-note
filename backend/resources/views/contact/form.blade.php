@@ -12,22 +12,22 @@
             <form class="form" action="{{ route('contact.confirm') }}" method="post">
                 @csrf
                 <div class="form__item">
-                    <label for="username">お名前<span　class="is-required">※必須</span></label>
-                    <input type="text" name="username" id="username" class="{{ $errors->has('username') ? 'is-invalid' : '' }}" value="{{ old('username') }}">
+                    <label for="username">お名前<span class="is-required">※必須</span></label>
+                    <input type="text" name="username" id="username" class="{{ $errors->has('username') ? 'is-invalid' : '' }}" value="{{ old('username') }}" autocomplete="name">
                     @if ($errors->has('username'))
                     <div class="form__error">{{ $errors->first('username') }}</div>
                     @endif
                 </div>
                 <div class="form__item">
-                    <label for="email">メールアドレス<span　class="is-required">※必須</span></label>
-                    <input type="email" name="email" id="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}">
+                    <label for="email">メールアドレス<span class="is-required">※必須</span></label>
+                    <input type="email" name="email" id="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}" autocomplete="email">
                     @if ($errors->has('email'))
                     <div class="form__error">{{ $errors->first('email') }}</div>
                     @endif
                 </div>
    
                 <div class="form__item">
-                    <label for="body">お問い合わせ内容<span　class="is-required">※必須</span></label>
+                    <label for="body">お問い合わせ内容<span class="is-required">※必須</span></label>
                     <textarea type="text" name="body" id="body" class="{{ $errors->has('body') ? 'is-invalid' : '' }}">{{ old('body') }}</textarea>
                     @if ($errors->has('body'))
                     <div class="form__error">{{ $errors->first('body') }}</div>

@@ -12,21 +12,21 @@
             <form action="{{ route('contact.send') }}" method="POST" class="form">
                 @csrf
                 <div class="form__item">
-                    <label for="username">お名前<span　class="is-required">※必須</span></label>
+                    <label for="username">お名前<span class="is-required">※必須</span></label>
                     <div class="form__item__input">
                         {!! $inputs['username'] !!}
                     </div>
                     <input name="username" value="{{ $inputs['username'] }}" type="hidden">
                 </div>
                 <div class="form__item">
-                    <label for="email">メールアドレス<span　class="is-required">※必須</span></label>
+                    <label for="email">メールアドレス<span class="is-required">※必須</span></label>
                     <div class="form__item__input">
                         {!! $inputs['email'] !!}
                     </div>
                     <input name="email" value="{{ $inputs['email'] }}" type="hidden">
                 </div>
                 <div class="form__item">
-                    <label for="body">お問い合わせ内容<span　class="is-required">※必須</span></label>
+                    <label for="body">お問い合わせ内容<span class="is-required">※必須</span></label>
                     <div class="form__item__input">
                         {!! nl2br($inputs['body']) !!}
                     </div>
