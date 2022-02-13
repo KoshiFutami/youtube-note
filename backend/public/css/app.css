@@ -11711,8 +11711,8 @@ toastr
 }
 
 button.toast-close-button {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 100%;
   position: absolute;
   right: 16px;
   top: 50%;
