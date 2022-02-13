@@ -11682,6 +11682,9 @@ toastr
   }
 }
 
+.toast {
+  position: relative;
+}
 @media (max-width: 767px) {
   .toast {
     width: 100%;

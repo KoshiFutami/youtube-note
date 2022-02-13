@@ -123,6 +123,7 @@ toastr
     // display: flex !important;
     // align-items: center;
     // flex-direction: row-reverse;
+    position: relative;
     @include sp {
         width: 100%;
     }
