@@ -65,6 +65,8 @@ class NoteController extends Controller
         $note->save(); 
         $note->tags()->sync($tags_id);
 
+        session()->flash('toastr', config('toastr.note.save'));
+
         return redirect()->route('notes.show', ['id' => $note->id]);
     }
 
@@ -107,6 +109,8 @@ class NoteController extends Controller
         $note->content = $request->content;
         $note->save(); 
         $note->tags()->sync($tags_id);
+
+        session()->flash('toastr', config('toastr.note.update'));
 
         return redirect()->route('notes.show', ['id' => $note->id]);
     }
@@ -196,6 +200,7 @@ class NoteController extends Controller
         } else {
             $user->bookmark_notes()->attach($note->id);
         }
+
         return back();
     }
 }

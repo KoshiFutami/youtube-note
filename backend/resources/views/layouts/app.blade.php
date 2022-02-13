@@ -107,6 +107,7 @@
                 <div class="footer__copyright">Copyright © {{ date('Y') }} SOKOMIRU</div>
             </div>
         </footer>
+        @include('components.toastr')
     </div>
 </body>
 </html>

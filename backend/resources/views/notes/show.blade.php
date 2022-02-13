@@ -21,7 +21,7 @@
                         <form action="{{ route('notes.destroy', $note) }}" method="post" class="note-detail__nav__item delete">
                             @csrf
                             @method('delete')
-                            <input type="submit" value="削除"　onclick='return confirm("こちらのメモを本当に削除しますか？");'>
+                            <input type="submit" value="削除" onclick='return confirm("こちらのメモを本当に削除しますか？");'>
                         </form>
                     </div>
                 </div>
@@ -68,14 +68,14 @@
                     @csrf
                     <input type="hidden" name="id" value="{{ $note->id }}">
                     <div class="form__item">
-                        <label for="title">タイトル<span　class="is-required">※必須</span></label>
+                        <label for="title">タイトル<span class="is-required">※必須</span></label>
                         <input type="text" name="title" id="title" class="{{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ $note->title }}">
                         @if ($errors->has('title'))
                         <div class="form__error">{{ $errors->first('title') }}</div>
                         @endif
                     </div>
                     <div class="form__item">
-                        <label for="video_url">YouTube動画のURL<span　class="is-required">※必須</span></label>
+                        <label for="video_url">YouTube動画のURL<span class="is-required">※必須</span></label>
                         <input type="text" name="video_url" id="video_url" class="{{ $errors->has('video_url') ? 'is-invalid' : '' }}" value="https://www.youtube.com/watch?v={{ $note->yt_video_id }}">
                         @if ($errors->has('video_url'))
                         <div class="form__error">{{ $errors->first('video_url') }}</div>
@@ -83,14 +83,14 @@
                     </div>
                     <div class="form__item">
                         <label for="start_seconds">再生位置<span class="instruction">（時:分:秒）</span></label>
-                        <input type="number" min="0"　name="start_seconds_h" id="start_seconds_h" class="{{ $errors->has('start_seconds_h') ? 'is-invalid' : '' }}" value="{{ $start_seconds[0] }}"> : <input type="number" min="0" max="59"　name="start_seconds_m" id="start_seconds_m" class="{{ $errors->has('start_seconds_m') ? 'is-invalid' : '' }}" value="{{ $start_seconds[1] }}"> : <input type="number" min="0" max="59"　name="start_seconds_s" id="start_seconds_s" class="{{ $errors->has('start_seconds_s') ? 'is-invalid' : '' }}" value="{{ $start_seconds[2] }}">
+                        <input type="number" min="0" name="start_seconds_h" id="start_seconds_h" class="{{ $errors->has('start_seconds_h') ? 'is-invalid' : '' }}" value="{{ $start_seconds[0] }}"> : <input type="number" min="0" max="59" name="start_seconds_m" id="start_seconds_m" class="{{ $errors->has('start_seconds_m') ? 'is-invalid' : '' }}" value="{{ $start_seconds[1] }}"> : <input type="number" min="0" max="59" name="start_seconds_s" id="start_seconds_s" class="{{ $errors->has('start_seconds_s') ? 'is-invalid' : '' }}" value="{{ $start_seconds[2] }}">
                     @if ($errors->has('start_seconds'))
                         <div class="text-danger">{{ $errors->first('start_seconds') }}</div>
                     @endif
                     </div>
                     <div class="form__item">
                         <label for="tags">タグ<span class="instruction">（複数のタグを追加する場合にはスペースで区切ってください）</span></label>
-                        <input type="text" name="tags" id="tags" class="{{ $errors->has('tags') ? 'is-invalid' : '' }}"　value="" placeholder="新規タグ">
+                        <input type="text" name="tags" id="tags" class="{{ $errors->has('tags') ? 'is-invalid' : '' }}" value="" placeholder="新規タグ">
                     @foreach ($note->tags as $tag)
                         <div class="checkbox-group">
                             <input type="checkbox" value="{{ $tag->id }}" name="current_tags[]" id="{{ $tag->id }}" checked>
@@ -102,14 +102,14 @@
                     @endif
                     </div>
                     <div class="form__item">
-                        <label for="content">メモ内容<span　class="is-required">※必須</span></label>
+                        <label for="content">メモ内容<span class="is-required">※必須</span></label>
                         <textarea type="text" name="content" id="content" class="{{ $errors->has('content') ? 'is-invalid' : '' }}">{{ $note->content }}</textarea>
                         @if ($errors->has('content'))
                         <div class="form__error">{{ $errors->first('content') }}</div>
                         @endif
                     </div>
                     <button type="submit" class="form__button">更新する</button>
-                    <div　　class="form__cancel" id="js-note-edit-cancel">キャンセル</div>
+                    <div class="form__cancel" id="js-note-edit-cancel">キャンセル</div>
                 </form>
             </div>
         </div>

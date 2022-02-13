@@ -74,9 +74,10 @@ class UserController extends Controller
         if ($user_thumbnail != null) {
             $user->thumbnail = User::storeProfileThumbnail($user_thumbnail, $user->id);
         } 
-        
 
         $user->save();
+
+        session()->flash('toastr', config('toastr.user.update'));
 
         return redirect(route('users.show', $user->username));
     }
