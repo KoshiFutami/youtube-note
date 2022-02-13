@@ -11037,6 +11037,30 @@ $(function () {
       }
     }).done(function (data) {
       console.log('It successed!');
+
+      if ($this.hasClass('is-bookmarked')) {
+        toastrMessage = "このメモをブックマークから削除しました。";
+      } else {
+        toastrMessage = "このメモをブックマークに保存しました。";
+      }
+
+      toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "750",
+        "hideDuration": "7500",
+        "timeOut": "4000",
+        "showEasing": "linear",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      };
+      toastr.success(toastrMessage);
       $this.toggleClass('is-bookmarked');
     }).fail(function () {
       console.log('It failed!');
