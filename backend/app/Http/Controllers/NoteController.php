@@ -18,7 +18,7 @@ class NoteController extends Controller
     /**
      * メモ作成画面を表示
      * @return view
-     *　 
+     *　
      */
     public function create()
     {
@@ -27,11 +27,11 @@ class NoteController extends Controller
     /**
      * 全ユーザーのメモ一覧を表示
      * @return view
-     *　 
+     *　
      */
     public function showAll()
     {
-        $notes = Note::all();
+        $notes = Note::orderBy('created_at', 'desc')->paginate(12);
         return view('notes.index', [
             'notes' => $notes,
         ]);
@@ -47,22 +47,22 @@ class NoteController extends Controller
         $note->fill($request->all());
 
         $note->user_id = auth()->id();
-        
+
         // YouTube動画IDの登録
         $video_url = $request->video_url;
         $yt_video_id = Note::getYtVideoId($video_url);
         $note->yt_video_id = $yt_video_id;
-        
+
         // YouTube動画再生時間の登録
         $h = $request->start_seconds_h;
         $m = $request->start_seconds_m;
         $s = $request->start_seconds_s;
         $start_seconds = Note::hourToSec($h, $m, $s);
         $note->start_seconds = $start_seconds;
-        
+
         $tags_id = Note::saveTagsAndGetIds($request->tags);
 
-        $note->save(); 
+        $note->save();
         $note->tags()->sync($tags_id);
 
         session()->flash('toastr', config('toastr.note.save'));
@@ -85,7 +85,7 @@ class NoteController extends Controller
         $video_url = $request->video_url;
         $yt_video_id = Note::getYtVideoId($video_url);
         $note->yt_video_id = $yt_video_id;
-        
+
         $h = $request->start_seconds_h;
         $m = $request->start_seconds_m;
         $s = $request->start_seconds_s;
@@ -107,7 +107,7 @@ class NoteController extends Controller
 
         $note->title = $request->title;
         $note->content = $request->content;
-        $note->save(); 
+        $note->save();
         $note->tags()->sync($tags_id);
 
         session()->flash('toastr', config('toastr.note.update'));
@@ -123,11 +123,11 @@ class NoteController extends Controller
     public function destroy(int $id)
     {
         $note = Note::find($id);
-        
+
         $this->authorize('update', $note);
 
         // $note_title = $note->title;
-        
+
         $note->tags()->sync([]);
         $note->delete();
 

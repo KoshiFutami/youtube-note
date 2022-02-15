@@ -15,6 +15,9 @@
         <p>メモが1件も保存されていません。</p>
         @endif
         </div>
+        <div class="notes-list__pagination">
+            {{ $notes->links() }}
+        </div>
 
     </div>
 </div>

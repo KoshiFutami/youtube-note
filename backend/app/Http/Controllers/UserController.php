@@ -73,7 +73,7 @@ class UserController extends Controller
 
         if ($user_thumbnail != null) {
             $user->thumbnail = User::storeProfileThumbnail($user_thumbnail, $user->id);
-        } 
+        }
 
         $user->save();
 
@@ -101,6 +101,9 @@ class UserController extends Controller
         // 重複を解消
         $tags = $tags->unique('id');
 
+        // ページネーション出力用メモ一覧
+        $notes = $user->notes()->orderBy('created_at', 'DESC')->paginate(12);
+
         return view('users.notes', [
             'user' => $user,
             'notes' => $notes,
@@ -116,7 +119,7 @@ class UserController extends Controller
     public function showBookmarks($username)
     {
         $user = User::where('username', $username)->first();
-        $notes = $user->bookmark_notes()->orderBy('created_at', 'desc')->get();
+        $notes = $user->bookmark_notes()->orderBy('created_at', 'DESC')->paginate(12);
 
         return view('users.bookmarks', [
             'user' => $user,

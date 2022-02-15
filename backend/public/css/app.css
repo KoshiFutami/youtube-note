@@ -11642,7 +11642,7 @@ input[type=search] {
 /*---------------------------------
 toastr
 ---------------------------------*/
-/*  
+/*
 .toast
 ---------------------------------*/
 #toast-container {
@@ -11746,7 +11746,7 @@ button.toast-close-button:hover {
 /*---------------------------------
 共通部分
 ---------------------------------*/
-/*  
+/*
 app-wrapper
 ---------------------------------*/
 .app-wrapper {
@@ -11755,7 +11755,7 @@ app-wrapper
   min-height: 100vh;
 }
 
-/*  
+/*
 ヘッダー
 ---------------------------------*/
 .header {
@@ -12053,7 +12053,7 @@ body:not(.user-logged-in) .header .header__inner {
   visibility: visible;
 }
 
-/*  
+/*
 フッター
 ---------------------------------*/
 .footer {
@@ -12100,7 +12100,7 @@ body:not(.user-logged-in) .header .header__inner {
   line-height: 1.4;
 }
 
-/*  
+/*
 フローティングボタン
 ---------------------------------*/
 .float-btn {
@@ -12144,7 +12144,7 @@ body:not(.user-logged-in) .header .header__inner {
 /*---------------------------------
 コンテンツ部分
 ---------------------------------*/
-/*  
+/*
 main
 ---------------------------------*/
 .main {
@@ -12164,7 +12164,7 @@ main
   }
 }
 
-/*  
+/*
 section
 ---------------------------------*/
 .section .section__inner {
@@ -12183,7 +12183,7 @@ section
   }
 }
 
-/*  
+/*
 section-title
 ---------------------------------*/
 .section-title {
@@ -12198,7 +12198,7 @@ section-title
 /*---------------------------------
 メモ関連
 ---------------------------------*/
-/*  
+/*
 notes-list
 ---------------------------------*/
 .notes-list {
@@ -12243,7 +12243,7 @@ notes-list
   }
 }
 
-/*  
+/*
 notes-list__head
 ---------------------------------*/
 .notes-list__head {
@@ -12261,7 +12261,7 @@ notes-list__head
   }
 }
 
-/*  
+/*
 notes-list__button
 ---------------------------------*/
 .notes-list__button {
@@ -12289,7 +12289,47 @@ notes-list__button
   color: #313131;
 }
 
-/*  
+/*
+notes-list__pagination
+---------------------------------*/
+.notes-list__pagination {
+  width: 100%;
+  margin-top: 24px;
+}
+.notes-list__pagination nav {
+  display: flex;
+  justify-content: center;
+}
+
+.page-item + .page-item {
+  margin-left: 12px;
+}
+
+.page-link {
+  color: #212121;
+  outline: none;
+  border: none;
+}
+.page-link:hover {
+  color: inherit;
+  box-shadow: none;
+  background: #fff;
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.page-item.active .page-link {
+  background: #212121;
+}
+.page-item.active .page-link:hover {
+  color: #fff;
+  box-shadow: none;
+  background: #212121;
+  opacity: 1;
+  text-decoration: none;
+}
+
+/*
 note
 ---------------------------------*/
 .note {
@@ -12367,7 +12407,7 @@ note
   }
 }
 
-/*  
+/*
 note-detail
 ---------------------------------*/
 .note-detail {
@@ -12701,7 +12741,7 @@ note-detail
   margin-left: 8px;
 }
 
-/*  
+/*
 note-form
 ---------------------------------*/
 .note-form {
@@ -12723,7 +12763,7 @@ note-form
   }
 }
 
-/*  
+/*
 note-edit
 ---------------------------------*/
 .note-edit {
@@ -12786,7 +12826,7 @@ note-edit
   color: #313131;
   background: #F6F9F9;
 }
-/*  
+/*
 note-edit-bg
 ---------------------------------*/
 .note-edit-bg {
@@ -12808,7 +12848,7 @@ note-edit-bg
   visibility: visible;
 }
 
-/*  
+/*
 search-form
 ---------------------------------*/
 .search-form {
@@ -12851,7 +12891,7 @@ search-form
   font-size: 1.2rem;
 }
 
-/*  
+/*
 search-form-message
 ---------------------------------*/
 .search-form-message span {
@@ -12862,7 +12902,7 @@ search-form-message
 /*---------------------------------
 ユーザーページ
 ---------------------------------*/
-/*  
+/*
 section.UserProfile
 ---------------------------------*/
 .section.UserProfile {
@@ -12900,7 +12940,7 @@ section.UserProfile
   }
 }
 
-/*  
+/*
 user-profile
 ---------------------------------*/
 .user-profile {
@@ -13017,7 +13057,7 @@ user-profile
   font-size: 1.2rem;
 }
 
-/*  
+/*
 user-notes
 ---------------------------------*/
 .user-notes {
@@ -13092,7 +13132,7 @@ user-notes
   }
 }
 
-/*  
+/*
 section.UserEdit
 ---------------------------------*/
 .section.UserEdit {
@@ -13113,7 +13153,7 @@ section.UserEdit
   }
 }
 
-/*  
+/*
 form
 ---------------------------------*/
 .form .form__head {
@@ -13414,7 +13454,7 @@ form
   }
 }
 
-/*  
+/*
 section.ContactForm
 ---------------------------------*/
 .section.ContactForm .section__inner {
@@ -13426,7 +13466,7 @@ section.ContactForm
   margin-top: 32px;
 }
 
-/*  
+/*
 section.Signup
 ---------------------------------*/
 .signup {
@@ -13491,7 +13531,7 @@ section.Signup
   }
 }
 
-/*  
+/*
 section.Login
 ---------------------------------*/
 .auth-form {
@@ -13513,7 +13553,7 @@ section.Login
   }
 }
 
-/*  
+/*
 interests
 ---------------------------------*/
 .interests .interests__head {
