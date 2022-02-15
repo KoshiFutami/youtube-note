@@ -11,10 +11,12 @@
         @if (isset($notes) && !$notes->isEmpty())
             @include('partials.notes_list', ['notes' => $notes])
         @else
-        <p>メモが1件も投稿されていません。</p>
+            <p>メモが1件も投稿されていません。</p>
         @endif
         </div>
-
+        <div class="notes-list__pagination">
+            {{ $notes->links() }}
+        </div>
     </div>
 </div>
 @endsection
