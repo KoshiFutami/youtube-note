@@ -24,6 +24,7 @@ class GoogleLoginController extends Controller
         }
 
         Auth::login($user, true);
+        session()->flash('toastr', config('toastr.google.login'));
         return redirect(route('home'));
     }
 

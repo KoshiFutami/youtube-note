@@ -30,5 +30,11 @@ return [
             'text' => 'ゲストログインに成功しました。',
         ],
     ],
+    'google' => [
+        'login' => [
+            'type' => 'success',
+            'text' => 'Googleアカウントでログインしました。',
+        ],
+    ],
 
 ];
