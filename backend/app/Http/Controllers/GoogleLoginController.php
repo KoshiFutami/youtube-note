@@ -22,7 +22,7 @@ class GoogleLoginController extends Controller
         if ($user == null) {
             $user = $this->createUserByGoogle($googleUser);
         }
-        
+
         Auth::login($user, true);
         return redirect(route('home'));
     }
@@ -33,6 +33,7 @@ class GoogleLoginController extends Controller
             'name' => $googleUser->name,
             'email' => $googleUser->email,
             'username' => $this->makeUsernameFromGmail($googleUser->email),
+            'password' => \Hash::make(uniqid()),
         ]);
         return $user;
     }
