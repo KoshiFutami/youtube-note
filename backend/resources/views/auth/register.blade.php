@@ -60,8 +60,9 @@
                         </div>
                     </div>
                     <button type="submit" class="form__button">新規登録</button>
+                    <a href="{{ route('googleLogin') }}" class="form__google-login">Googleでログイン</a>
                     <div class="form__button-subtext">アカウントをお持ちですか？<a href="{{ route('login') }}">ログインはこちら</a><br><a href="{{ route('login.guest') }}">ゲストログイン</a>でお試しもできます。</div>
-                    
+
                 </form>
             </div>
         </div>

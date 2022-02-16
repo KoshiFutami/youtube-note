@@ -22,7 +22,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/login/google/redirect', [GoogleLoginController::class, 'getGoogleAuth']);
+Route::get('/login/google/redirect', [GoogleLoginController::class, 'getGoogleAuth'])->name('googleLogin');
 Route::get('/login/google/callback', [GoogleLoginController::class, 'authGoogleCallback']);
 
 Route::prefix('contact')->name('contact.')->group(function() {

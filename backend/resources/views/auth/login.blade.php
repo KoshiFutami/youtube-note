@@ -31,8 +31,9 @@
                     <label class="form__item__check-label remember-me" for="remember"><input class="form__item__check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>ログインしたままにする</label>
                 </div>
                 <button type="submit" class="form__button">ログイン</button>
+                <a href="{{ route('googleLogin') }}" class="form__google-login">Googleでログイン</a>
                 <div class="form__button-subtext"><a href="{{ route('register') }}">会員登録</a> / <a href="{{ route('login.guest') }}">ゲストログイン</a> / <a href="{{ route('password.request') }}">パスワードを忘れた方</a></div>
-                
+
             </form>
         </div>
     </div>
