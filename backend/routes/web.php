@@ -22,8 +22,8 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/auth/redirect', [GoogleLoginController::class, 'getGoogleAuth']);
-Route::get('/auth/callback', [GoogleLoginController::class, 'authGoogleCallback']);
+Route::get('/login/google/redirect', [GoogleLoginController::class, 'getGoogleAuth']);
+Route::get('/login/google/callback', [GoogleLoginController::class, 'authGoogleCallback']);
 
 Route::prefix('contact')->name('contact.')->group(function() {
     Route::get('/', [ContactController::class, 'contact'])->name('form');
