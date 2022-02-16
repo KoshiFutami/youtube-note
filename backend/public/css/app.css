@@ -12371,6 +12371,10 @@ note
   margin-bottom: 12px;
   padding: 0 16px;
   transition: 0.2s;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 @media (max-width: 767px) {
   .note .note__title {
@@ -12689,12 +12693,16 @@ note-detail
 .note-detail .note-detail__title {
   color: #212121;
   font-size: 1.6rem;
-  margin: 0 0;
+  margin: 40px 0 0;
+  line-height: 1.5;
 }
 @media (max-width: 767px) {
   .note-detail .note-detail__title {
     font-size: 1.4rem;
   }
+}
+.note-detail .note-detail__tags + .note-detail__title {
+  margin-top: 0;
 }
 .note-detail .note-detail__content {
   color: #515151;
