@@ -1838,6 +1838,14 @@ form
     }
 
 }
+.NoteDetail,
+.NoteCreate {
+    .form__button {
+        width: auto;
+        margin-right: 0;
+        padding: 0 48px;
+    }
+}
 
 /*
 section.ContactForm
