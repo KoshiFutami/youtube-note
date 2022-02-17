@@ -59,6 +59,7 @@ YouTube動画とセットでメモを記録・管理できるWebアプリケー�
 
 ### 認証機能
 - ユーザー登録・ログイン・ログアウト（Laravel UI） 
+- Googleログイン（Laravel Socialite）
 - プロフィール編集
   - プロフィール画像投稿 
 
